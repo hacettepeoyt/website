@@ -14,7 +14,7 @@ app.use("/", mainRoute);
 
 app.listen(port, () => {
   console.log(`Server listening on ${port}`);
-  connectToMongo();
+  // connectToMongo();
 });
 
 module.exports = app;
