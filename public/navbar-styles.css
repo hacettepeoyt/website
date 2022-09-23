@@ -1,0 +1,37 @@
+.body{
+    background: white;
+}
+.container-fluid{
+    padding-left: 2%;
+    padding-right: 2%;
+}
+.navbar-brand-logo{
+    margin-bottom: 10px;
+    max-width: 20%;
+    max-height: 20%;
+    filter: invert(99%) sepia(93%) saturate(14%) hue-rotate(88deg) brightness(105%) contrast(102%);
+}
+.btn{
+    outline-color: #ff4100;
+    border: 2px solid #ff4100;
+    color: white;
+    font-family: 'Ubuntu Mono', monospace;
+    background-color: #ff4100 !important;
+    white-space: nowrap;
+}
+.btn:hover{
+    color: black !important;
+    font-family: 'Ubuntu Mono', monospace;
+    border: 2px solid #ff4100 !important;
+    text-decoration: none;
+}
+.btn:active{
+    color: #ff4100 !important;
+    font-family: 'Ubuntu Mono', monospace;
+    border: 2px solid #ff4100 !important;
+    background-color: black !important;
+    text-decoration: none;
+}
+li.nav-item {
+    list-style:none ;    
+}
