@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-// This is a draft for beginning, all fields will be decided later on.
 
 const memberSchema = new Schema({
     firstName: {
@@ -15,6 +14,26 @@ const memberSchema = new Schema({
     },
 
     studentID: {
+        type: String,
+        required: true
+    },
+
+    email: {
+        type: String,
+        required: true
+    },
+
+    department: {
+        type: String,
+        required: true
+    },
+
+    mobileNumber: {
+        type: String,
+        required: true
+    },
+
+    groupChat: {
         type: String,
         required: true
     }
