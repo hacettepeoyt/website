@@ -34,7 +34,7 @@ const memberSchema = new Schema({
     },
 
     groupChat: {
-        type: String,
+        type: Boolean,
         required: true
     }
 })
