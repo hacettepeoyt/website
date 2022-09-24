@@ -1,0 +1,43 @@
+<!-- CSS Customizations -->
+<link href="/public/faq-styles.css" rel="stylesheet">
+
+<!-- Page itself -->
+<div class="container">
+
+    <div class="row py-5">
+        <div class="col-lg-9 mx-auto text-white text-center">
+            <h1 class="display-4">Sıkça Sorulan Sorular</h1>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-lg-9 mx-auto">
+            <div id="accordionExample" class="accordion shadow">
+
+                <% let i=1 %>
+                <% for(faq of faqs) { %>
+                    <div class="card">
+
+                        <!-- QUESTION -->
+                        <div id=<%= `heading${i}` %> class="card-header bg-white shadow-sm border-0" >
+                            <h2 class="mb-0">
+                                <button type="button" data-toggle="collapse" data-target=<%= `#collapse${i}` %> aria-controls= <%= `collapse${i}` %> class="btn text-dark font-weight-bold collapsible-link"><%= faq.question %>
+                            </h2>
+                        </div>
+
+                        <!-- ANSWER -->
+                        <div id=<%= `collapse${i}` %> aria-labelledby=<%= `heading${i}` %> data-parent="#accordionExample" class="collapse">
+                            <div class="card-body p-5">
+                                <p class="font-weight-light m-0"><%= faq.answer %></p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <% i++ %>
+                <% } %>
+
+            </div>
+        </div>
+    </div>
+</div>
