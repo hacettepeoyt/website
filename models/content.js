@@ -123,10 +123,14 @@ const eventSchema = new Schema({
     }
 });
 
+const Faq = mongoose.model('Faq', faqSchema);
+const Project = mongoose.model('Project', projectSchema);
+const Course = mongoose.model('Course', courseSchema);
+const Event = mongoose.model('Event', eventSchema);
 
 module.exports = {
-    faqSchema,
-    projectSchema,
-    courseSchema,
-    eventSchema
+    Faq,
+    Project,
+    Course,
+    Event
 }
