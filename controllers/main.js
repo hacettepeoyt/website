@@ -1,7 +1,13 @@
+const content = require('../models/content');
+const Member = require('../models/member');
+const Faq = content.Faq;
+const Event = content.Event;
+const Project = content.Project;
+const Course = content.Course;
+
 const boilerplate = "layouts/boilerplate";
 const errorPage = "../error";
 
-// Page contents are hardcoded right now, will be fixed later!
 
 const renderHomePage = async (req, res) => {
     res.redirect("/about");
@@ -10,7 +16,6 @@ const renderHomePage = async (req, res) => {
 const renderAboutPage = async (req, res) => {
     try {
         const page = "../sections/about";
-        fooText = "Hakkımızda";
         res.render(boilerplate, { page });
     } catch (err) {
         res.render(boilerplate, { page: errorPage, err });
@@ -20,7 +25,8 @@ const renderAboutPage = async (req, res) => {
 const renderFaqPage = async (req, res) => {
     try {
         const page = "../sections/faq";
-        res.render(boilerplate, { page });
+        const faqs = await Faq.find({});
+        res.render(boilerplate, { page, faqs });
     } catch (err) {
         res.render(boilerplate, { page: errorPage, err });
     }
@@ -29,7 +35,9 @@ const renderFaqPage = async (req, res) => {
 const renderEventsPage = async (req, res) => {
     try {
         const page = "../sections/events";
-        res.render(boilerplate, { page });
+        const events = await Event.find({});
+        const courses = await Course.find({});
+        res.render(boilerplate, { page, events, courses });
     } catch (err) {
         res.render(boilerplate, { page: errorPage, err });
     }
@@ -38,7 +46,8 @@ const renderEventsPage = async (req, res) => {
 const renderArgePage = async (req, res) => {
     try {
         const page = "../sections/arge";
-        res.render(boilerplate, { page });
+        const projects = await Project.find({});
+        res.render(boilerplate, { page, projects });
     } catch (err) {
         res.render(boilerplate, { page: errorPage, err });
     }

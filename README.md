@@ -6,3 +6,8 @@
 2. Create `.env` file in the root.
 3. Fill the variables from Signal group chat.
 4. Run it with `npm start`.
+
+### Seed
+0. Make sure your machine has MongoDB installed.
+1. Make sure MongoDB is currently working in your machine with `sudo systemctl status mongod`.
+2. Seed your local database with `npm run seed`.

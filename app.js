@@ -20,7 +20,7 @@ app.listen(port, (err) => {
     console.log(err)
   } else {
     console.log(`Server listening on ${port}`);
-    // connectToMongo();
+    connectToMongo();
   }
 });
 
