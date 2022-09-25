@@ -1,37 +1,73 @@
-.body{
-    background: white;
+@font-face {
+    font-family: "terminal-font";
+    src: url("bold.ttf");
 }
-.container-fluid{
-    padding-left: 2%;
-    padding-right: 2%;
+
+.body{
+    background: #EEEEEE;
 }
 .navbar-brand-logo{
-    margin-bottom: 10px;
-    max-width: 20%;
-    max-height: 20%;
-    filter: invert(99%) sepia(93%) saturate(14%) hue-rotate(88deg) brightness(105%) contrast(102%);
+    position:relative;
+    width: 200px;
+    left: 40px;
 }
 .btn{
     outline-color: #ff4100;
     border: 2px solid #ff4100;
     color: white;
-    font-family: 'Ubuntu Mono', monospace;
+    font-family: terminal-font;
     background-color: #ff4100 !important;
-    white-space: nowrap;
 }
 .btn:hover{
     color: black !important;
-    font-family: 'Ubuntu Mono', monospace;
+    font-family: terminal-font;
     border: 2px solid #ff4100 !important;
     text-decoration: none;
 }
 .btn:active{
     color: #ff4100 !important;
-    font-family: 'Ubuntu Mono', monospace;
+    font-family: terminal-font;
     border: 2px solid #ff4100 !important;
     background-color: black !important;
     text-decoration: none;
 }
-li.nav-item {
-    list-style:none ;    
+
+.navbar-toggler{
+    outline: none;
+}
+.navbar-nav{
+    font-family: terminal-font;
+    color: white;
+}
+.nav-link{
+    color: white;
+}
+
+.nav-link:hover{
+    color: darkgray;
+}
+.nav-link:focus{
+    color: white;
+}
+.oyt-svg{
+    width: 200px;
+}
+.nav-link-footer{
+    color: #ff4100;
+    text-decoration: none;
+}
+.nav-link-footer:hover{
+    color: #cc3400;
+    text-decoration: none;
+}
+.navbar-brand-logo-footer{
+    position: relative;
+    width: 155px;
+    left: 45px;
+}
+.footer-left{
+    width: 400px;
+}
+.active-nav{
+    color: #cc3400 !important;
 }
