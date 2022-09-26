@@ -8,5 +8,6 @@ router.get('/faq', controller.renderFaqPage);
 router.get('/events', controller.renderEventsPage);
 router.get('/arge', controller.renderArgePage);
 router.get('/forms/:form', controller.renderFormPage);
+router.get('/welcome', controller.renderWelcome);
 
 module.exports = router;

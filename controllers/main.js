@@ -82,11 +82,16 @@ const renderWIP = async (req, res) => {
     res.render(boilerplate, { page: "../sections/wip" })
 }
 
+const renderWelcome = async (req, res) => {
+    res.render(boilerplate, { page: "../sections/welcome" })
+}
+
 module.exports = {
     renderHomePage,
     renderAboutPage,
     renderFaqPage,
     renderEventsPage,
     renderArgePage,
-    renderFormPage
+    renderFormPage,
+    renderWelcome
 }
