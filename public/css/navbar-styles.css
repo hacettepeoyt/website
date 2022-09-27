@@ -1,6 +1,6 @@
 @font-face {
     font-family: "terminal-font";
-    src: url("bold.ttf");
+    src: url("../font/bold.ttf");
 }
 
 .body{
