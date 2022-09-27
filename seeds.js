@@ -15,28 +15,37 @@ const seedMembers = [
         firstName: "Xavi",
         lastName: "Hernandez",
         studentID: "123456789",
+        degree: "Doktoraa",
         email: "xavi@barcelona.com",
         department: "Bilgisayar Mühendisliği",
         mobileNumber: "05066660606",
-        groupChat: true
+        signal: true,
+        telegram: true,
+        whatsapp: false
     },
     {
         firstName: "Andres",
         lastName: "Iniesta",
         studentID: "987654321",
+        degree: "2. Sınıf",
         email: "iniesta@barcelona.com",
         department: "Bilgisayar Mühendisliği",
         mobileNumber: "05088880808",
-        groupChat: false
+        signal: true,
+        telegram: true,
+        whatsapp: true
     },
     {
         firstName: "Lionel",
         lastName: "Messi",
         studentID: "135792468",
+        degree: "Diğer",
         email: "messi@barcelona.com",
         department: "Yapay Zeka Mühendisliği",
         mobileNumber: "05100001010",
-        groupChat: false
+        signal: false,
+        telegram: false,
+        whatsapp: false
     }
 ]
 
