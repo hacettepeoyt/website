@@ -15,7 +15,7 @@ const seedMembers = [
         firstName: "Xavi",
         lastName: "Hernandez",
         studentID: "123456789",
-        degree: "Doktoraa",
+        degree: "Doktora",
         email: "xavi@barcelona.com",
         department: "Bilgisayar Mühendisliği",
         mobileNumber: "05066660606",
