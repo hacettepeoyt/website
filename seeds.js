@@ -19,9 +19,7 @@ const seedMembers = [
         email: "xavi@barcelona.com",
         department: "Bilgisayar Mühendisliği",
         mobileNumber: "05066660606",
-        signal: true,
-        telegram: true,
-        whatsapp: false
+        groupChats: 3
     },
     {
         firstName: "Andres",
@@ -31,9 +29,7 @@ const seedMembers = [
         email: "iniesta@barcelona.com",
         department: "Bilgisayar Mühendisliği",
         mobileNumber: "05088880808",
-        signal: true,
-        telegram: true,
-        whatsapp: true
+        groupChats: 5
     },
     {
         firstName: "Lionel",
@@ -43,9 +39,7 @@ const seedMembers = [
         email: "messi@barcelona.com",
         department: "Yapay Zeka Mühendisliği",
         mobileNumber: "05100001010",
-        signal: false,
-        telegram: false,
-        whatsapp: false
+        groupChats: 6
     }
 ]
 

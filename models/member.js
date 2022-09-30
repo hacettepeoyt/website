@@ -38,18 +38,8 @@ const memberSchema = new mongoose.Schema({
         required: true
     },
 
-    signal: {
-        type: Boolean,
-        required: true
-    },
-
-    telegram: {
-        type: Boolean,
-        required: true
-    },
-
-    whatsapp: {
-        type: Boolean,
+    groupChat: {
+        type: Number,
         required: true
     }
 })
