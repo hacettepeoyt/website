@@ -1,36 +1,111 @@
-<div id="events-container" class="container bg-white col-sm-8 mx-auto">
-    <div class="row py-5 my-4">
+<link href="/public/event-course-styles.css" rel="stylesheet">
 
-        <% for (event of events) { console.log(event.name); %>
-            <div class="col-md-6 col-lg-4 col-xl-3 mb-4 mb-lg-5 px-5 px-md-3 px-lg-auto">
-                <div class="card rounded shadow-sm border-1 h-100">
-                    <div class="card-body p-4"><img
-                            src="<%= event.img %> >" alt=""
-                            class="img-fluid d-block mx-auto mb-3">
-                        <h4> <%= event.name %> </h4>
-                        <p class="medium text-muted mb-4"> <%= event.description %>  </p>
-                        <ul class="list-inline mb-2">
-                            <li class="list-inline-item m-0">
-                                <i class="bi bi-geo-alt-fill"></i>
-                                <span class="medium px-1"><%= event.location %></span>
-                            </li>
-                        </ul>
-                        <ul class="list-inline mb-2">
-                            <li class="list-inline-item m-0">
-                                <i class="bi bi-calendar-check-fill"></i>
-                                <span class="medium px-1"><%= event.date + " - " + event.time%></span>
-                            </li>
-                        </ul>
-                        <ul class="list-inline">
-                            <li class="list-inline-item m-0">
-                                <i class="bi bi-hourglass-split"></i>
-                                <span class="medium px-1"><%= event.duration%></span>
-                            </li>
-                        </ul>
+<div id="event-course-container" class="row bg-white col-11 mx-auto px-5">
+
+    <div id="events-container" class="bg-white col-5 mx-auto">
+        <div class="row px-2 py-2 my-4 shadow rounded" style="background-color: deepskyblue;">
+            <div class="mt-2">
+                <h2>Etkinliklerimiz</h2>
+            </div>
+            <% for (event of events) { console.log(event.name); %>
+                <div class=" col-6 my-5 my-md-2 px-2">
+                    <div class="card rounded border-1 h-100 event-card-inner">
+                        <div class="card-body p-4"><img src="<%= event.img %> >" alt=""
+                                class="img-fluid d-block mx-auto mb-3">
+                            <h4>
+                                <%= event.name %>
+                            </h4>
+                            <p class="medium text-muted mb-4">
+                                <%= event.description %>
+                            </p>
+                            <ul class="list-inline mb-2">
+                                <li class="list-inline-item m-0">
+                                    <i class="bi bi-geo-alt-fill"></i>
+                                    <span class="medium px-1">
+                                        <%= event.location %>
+                                    </span>
+                                </li>
+                            </ul>
+                            <ul class="list-inline mb-2">
+                                <li class="list-inline-item m-0">
+                                    <i class="bi bi-calendar-check-fill"></i>
+                                    <span class="medium px-1">
+                                        <%= event.date + " - " + event.time%>
+                                    </span>
+                                </li>
+                            </ul>
+                            <ul class="list-inline">
+                                <li class="list-inline-item m-0">
+                                    <i class="bi bi-hourglass-split"></i>
+                                    <span class="medium px-1">
+                                        <%= event.duration%>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
+                <% } %>
+        </div>
+    </div>
+    <div id="courses-container" class="bg-white col-5 mx-auto">
+        <div class="row px-2 py-2 my-4 shadow rounded" style="background-color: orange;">
+            <div class="mt-2">
+                <h2>Kurslarımız</h2>
             </div>
-            <% } %>
-
+            <% for (course of courses) { %>
+                <div class=" col-6 my-5 my-md-2 px-2">
+                    <div class="card rounded border-1 h-100 event-card-inner">
+                        <div class="card-body p-4"><img src="<%= course.img %> >" alt=""
+                                class="img-fluid d-block mx-auto mb-3">
+                            <h4>
+                                <%= course.name %>
+                            </h4>
+                            <% if (course.preRequisite.length) { %>
+                                <div class="">
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item m-0">
+                                            Ön koşul<%= course.preRequisite.length > 1 ? "lar" : "" %>:
+                                        </li>
+                                        <% for (req of course.preRequisite) { %> 
+                                            <div class="req-chip bg-warning">
+                                                <%= req %> 
+                                            </div>
+                                        <% } %> 
+                                    </ul>
+                                </div>
+                            <% } %> 
+                            <p class="medium text-muted mb-4">
+                                <%= course.description %>
+                            </p>
+                            <ul class="list-inline mb-2">
+                                <li class="list-inline-item m-0">
+                                    <i class="bi bi-geo-alt-fill"></i>
+                                    <span class="medium px-1">
+                                        <%= course.location %>
+                                    </span>
+                                </li>
+                            </ul>
+                            <ul class="list-inline mb-2">
+                                <li class="list-inline-item m-0">
+                                    <i class="bi bi-calendar-check-fill"></i>
+                                    <span class="medium px-1">
+                                        <%= course.date + " - " + course.time%>
+                                    </span>
+                                </li>
+                            </ul>
+                            <ul class="list-inline">
+                                <li class="list-inline-item m-0">
+                                    <i class="bi bi-hourglass-split"></i>
+                                    <span class="medium px-1">
+                                        <%= course.duration%>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+        </div>
     </div>
 </div>
