@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 
-const memberSchema = mongoose.Schema({
+const memberSchema = new mongoose.Schema({
     firstName: {
         type: String,
         required: true
@@ -14,6 +14,12 @@ const memberSchema = mongoose.Schema({
 
     studentID: {
         type: String,
+        required: true
+    },
+
+    degree: {
+        type: String,
+        enum: ["Hazırlık", "1. Sınıf", "2. Sınıf", "3. Sınıf", "4. Sınıf", "Yüksek Lisans", "Doktora", "Diğer"],
         required: true
     },
 
@@ -33,7 +39,7 @@ const memberSchema = mongoose.Schema({
     },
 
     groupChat: {
-        type: Boolean,
+        type: Number,
         required: true
     }
 })
