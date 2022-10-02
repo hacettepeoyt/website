@@ -4,8 +4,8 @@
     <div id="event-course-container" class="bg-white col-11 col-xl-10 container-fluid mx-auto">
         <div class="row row-cols-2">
             <div id="events-container" class="bg-white col px-1 px-sm-2 px-lg-4 mx-auto">
-                <div class="row mx-auto px-1 px-sm-1 py-2 my-4 shadow rounded" style="background-color: deepskyblue;">
-                    <div class="mt-2 text-center">
+                <div class="row mx-auto px-1 px-sm-1 py-2 my-4 rounded shadow events-color">
+                    <div class="mt-2 text-center p-0">
                         <h2>Etkinliklerimiz</h2>
                     </div>
                     <% for (const [index, event] of events.entries()) { %>
@@ -17,7 +17,7 @@
                                     <h4 class="mb-3">
                                         <%= event.name %>
                                     </h4>
-                                    <button class="btn btn-primary mt-auto">Detaylar &gt;</button>
+                                    <button class="btn events-color mt-auto border-0">Detaylar &gt;</button>
                                 </div>
                             </div>
                         </div>
@@ -71,8 +71,8 @@
                 </div>
             </div>
             <div id="courses-container" class="bg-white col px-1 px-sm-2 px-lg-4 mx-auto">
-                <div class="row mx-auto px-1 px-sm-1 py-2 my-4 shadow rounded" style="background-color: orange;">
-                    <div class="mt-2 text-center">
+                <div class="row mx-auto px-1 px-sm-1 py-2 my-4 rounded shadow courses-color">
+                    <div class="mt-2 text-center p-0">
                         <h2>Kurslarımız</h2>
                     </div>
                     <% for (const [index, course] of courses.entries()) { %>
@@ -84,7 +84,7 @@
                                     <h4 class="mb-3">
                                         <%= course.name %>
                                     </h4>
-                                    <button class="btn btn-warning mt-auto">Detaylar ></button>
+                                    <button class="btn mt-auto courses-color border-0">Detaylar ></button>
                                 </div>
                             </div>
                         </div>
@@ -108,7 +108,7 @@
                                                             Ön koşul<%= course.preRequisite.length> 1 ? "lar" : "" %>:
                                                         </li>
                                                         <% for (req of course.preRequisite) { %>
-                                                            <div class="req-chip bg-warning">
+                                                            <div class="req-chip courses-color">
                                                                 <%= req %>
                                                             </div>
                                                             <% } %>
