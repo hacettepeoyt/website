@@ -2,19 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e7d7e51c-868a-45fd-96b6-6c2647f8a770" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/enroll-form-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/enroll-form-styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/faq-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/faq-styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/navbar-footer-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/navbar-footer-styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/layouts/boilerplate.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/boilerplate.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/partials/footer.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/footer.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/partials/navbar.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/navbar.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/sections/events.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/sections/events.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/sections/forms/contact.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/sections/forms/contact.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/sections/forms/enroll.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/sections/forms/enroll.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +50,7 @@
       <workItem from="1664556590633" duration="2361000" />
       <workItem from="1664575673469" duration="7091000" />
       <workItem from="1664717027692" duration="2798000" />
-      <workItem from="1664736075111" duration="598000" />
+      <workItem from="1664736075111" duration="723000" />
     </task>
     <servers />
   </component>
