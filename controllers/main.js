@@ -33,13 +33,10 @@ const renderFaqPage = async (req, res) => {
 }
 
 const renderEventsPage = async (req, res) => {
-    //await renderWIP(req, res);
-    //return;
     try {
         const page = "../sections/events";
         const events = await Event.find({});
         const courses = await Course.find({});
-        console.log("Here::::: " + events.length)
         res.render(boilerplate, { page, events, courses });
     } catch (err) {
         res.render(boilerplate, { page: errorPage, err });

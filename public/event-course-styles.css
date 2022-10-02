@@ -4,8 +4,6 @@
     transition: all 0.2s ease-in-out;
 }
 
-/* Create the hidden pseudo-element */
-/* include the shadow for the end state */
 .event-card-inner::after {
     content: '';
     position: absolute;
@@ -15,12 +13,10 @@
     transition: opacity 0.2s ease-in-out;
 }
 
-/* Scale up the box */
 .event-card-inner:hover {
     transform: scale(1.03, 1.03);
 }
 
-/* Fade in the pseudo-element with the bigger shadow */
 .event-card-inner:hover::after {
     opacity: 1;
 }
@@ -36,7 +32,7 @@
 }
 
 .events-color {
-    background: #36D1DC;  /* fallback for old browsers */
+    background: #36D1DC;
     background-image: linear-gradient(60deg,#529ffe  0%, #41d6ff 100%);
     border-width: 0;
 }
