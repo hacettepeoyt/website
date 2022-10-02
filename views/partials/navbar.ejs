@@ -9,19 +9,19 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto me-3 ">
                 <li class="nav-item px-1">
-                    <a class="nav-link" href="/about">Hakkımızda</a>
+                    <a class="nav-link <%= (page.endsWith('about')) ? "active" : "" %>" href="/about">Hakkımızda</a>
                 </li>
                 <li class="nav-item px-1">
-                    <a class="nav-link" href="/events">Etkinlikler</a>
+                    <a class="nav-link <%= (page.endsWith('events')) ? "active" : "" %>" href="/events">Etkinlikler</a>
                 </li>
                 <li class="nav-item px-1">
-                    <a class="nav-link" href="/arge">ARGE</a>
+                    <a class="nav-link <%= (page.endsWith('arge')) ? "active" : "" %>" href="/arge">ARGE</a>
                 </li>
                 <li class="nav-item px-1">
-                    <a class="nav-link" href="/faq">SSS</a>
+                    <a class="nav-link <%= (page.endsWith('faq')) ? "active" : "" %>" href="/faq">SSS</a>
                 </li>
                 <li class="nav-item px-1 pe-3">
-                    <a class="nav-link" href="/forms/contact">İletişim</a>
+                    <a class="nav-link <%= (page.endsWith('contact')) ? "active" : "" %>" href="/forms/contact">İletişim</a>
                 </li>
                 <li class="nav-item">
                     <button id="signup-btn" class="btn btn-outline" onclick="location.href='/forms/enroll'" type="button">Üye Ol</button>

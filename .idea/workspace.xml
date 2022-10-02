@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e7d7e51c-868a-45fd-96b6-6c2647f8a770" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/navbar-footer-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/navbar-footer-styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/partials/navbar.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/navbar.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -50,7 +51,7 @@
       <workItem from="1664556590633" duration="2361000" />
       <workItem from="1664575673469" duration="7091000" />
       <workItem from="1664717027692" duration="2798000" />
-      <workItem from="1664736075111" duration="723000" />
+      <workItem from="1664736075111" duration="2671000" />
     </task>
     <servers />
   </component>
