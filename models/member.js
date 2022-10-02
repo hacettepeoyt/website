@@ -38,7 +38,7 @@ const memberSchema = new mongoose.Schema({
         required: true
     },
 
-    groupChat: {
+    groupChats: {
         type: Number,
         required: true
     }
