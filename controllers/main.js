@@ -33,8 +33,6 @@ const renderFaqPage = async (req, res) => {
 }
 
 const renderEventsPage = async (req, res) => {
-    await renderWIP(req, res);
-    return;
     try {
         const page = "../sections/events";
         const events = await Event.find({});
