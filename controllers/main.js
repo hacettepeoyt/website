@@ -44,8 +44,6 @@ const renderEventsPage = async (req, res) => {
 }
 
 const renderArgePage = async (req, res) => {
-    await renderWIP(req, res);
-    return;
     try {
         const page = "../sections/arge";
         const projects = await Project.find({});
