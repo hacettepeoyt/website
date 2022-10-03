@@ -65,7 +65,9 @@ const renderFormPage = async (req, res) => {
         } else if (form === 'enroll') {
             res.render(boilerplate, { page: enrollPage });
         } else if (form == 'request') {
-            res.render(boilerplate, { page: requestPage });
+            await renderWIP(req, res);
+            return;
+            //res.render(boilerplate, { page: requestPage });
         } else {
             throw Error;
         }
