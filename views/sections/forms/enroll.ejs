@@ -33,8 +33,26 @@
                                 <img class="" src="/public/icon/mail.png">
                             </span>
                             </div>
-                            <input id="email" type="email" name="email" placeholder="Email Address" class="form-control bg-white border-left-0 border-md">
+                            <input id="email" type="email" name="email" placeholder="Mail Adresi" class="form-control bg-white border-left-0 border-md">
                         </div>
+
+                        <!-- Class -->
+                        <div class="input-group col-lg-12 mb-4">
+                            <div class="input-group-prepend">
+                            <span class="px-1 border-md border-right-0 me-2">
+                                <img class="" src="/public/icon/class.png">
+                            </span>
+                            </div>
+                            <select class="form-control">
+                                <option hidden>Sınıfınız ↓</option>
+                                <option>Hazırlık</option>
+                                <option>1.Sınıf</option>
+                                <option>2.Sınıf</option>
+                                <option>3.Sınıf</option>
+                                <option>4.Sınıf</option>
+                            </select>
+                        </div>
+
 
                         <!-- Phone Number -->
                         <div class="input-group col-lg-6 mb-4">
@@ -43,7 +61,7 @@
                                 <img class="" src="/public/icon/phone.png">
                             </span>
                             </div>
-                            <input id="phoneNumber" type="tel" name="phone" placeholder="Phone Number" class="form-control bg-white border-md border-left-0">
+                            <input id="phoneNumber" type="tel" name="phone" placeholder="Telefon Numarası" class="form-control bg-white border-md border-left-0">
                         </div>
 
                         <!-- Student Number -->
@@ -55,6 +73,34 @@
                             </div>
                             <input id="email" type="text" name="Student Number" placeholder="Öğrenci Numarası" class="form-control bg-white border-left-0 border-md">
                         </div>
+
+                        <!-- Social -->
+                        <div class="input-group col-lg-12 mb-4">
+                            <div class="input-group-prepend">
+                            <span class="px-1 border-md border-right-0 me-2">
+                                <img class="" src="/public/icon/social.png">
+                            </span>
+                            </div>
+                            <div class="form-check pe-3">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    Whatsapp
+                                </label>
+                            </div>
+                            <div class="form-check pe-3">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    Signal
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    Telegram
+                                </label>
+                            </div>
+                        </div>
+
                         <!-- Submit Button -->
                         <div class="form-group mb-0" style="margin-left: 47px;">
                             <button id="signup-btn" class="btn btn-outline" onclick="location.href='#'" type="button">Üye Ol</button>

@@ -19,3 +19,7 @@
 .card-registration .select-arrow {
     top: 13px;
 }
+
+#select-placeholder{
+    color: gray;
+}
