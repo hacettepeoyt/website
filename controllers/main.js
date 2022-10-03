@@ -9,6 +9,9 @@ const boilerplate = "layouts/boilerplate";
 const errorPage = "../error";
 
 
+// TODO new solution for error handling instead of try-catch
+
+
 const renderHomePage = async (req, res) => {
     res.redirect("/about");
 }
@@ -53,36 +56,45 @@ const renderArgePage = async (req, res) => {
     }
 }
 
-const renderFormPage = async (req, res) => {
-    const { form } = req.params;
-    const enrollPage = "../sections/forms/enroll";
-    const contactPage = "../sections/forms/contact";
-    const requestPage = "../sections/forms/request";
+const renderWelcome = async (req, res) => {
+    res.render(boilerplate, { page: "../sections/welcome" })
+}
 
-    try {
-        if (form === 'contact') {
-            res.render(boilerplate, { page: contactPage });
-        } else if (form === 'enroll') {
-            res.render(boilerplate, { page: enrollPage });
-        } else if (form == 'request') {
-            await renderWIP(req, res);
-            return;
-            //res.render(boilerplate, { page: requestPage });
-        } else {
-            throw Error;
-        }
-    } catch (err) {
-        res.render(boilerplate, { page: errorPage, err });
-    }
+const renderEnrollForm = async (req, res) => {
+    const page = "../sections/forms/enroll";
+    res.render(boilerplate, { page: page });
+}
+
+const renderContactForm = async (req, res) => {
+    const page = "../sections/forms/contact";
+    res.render(boilerplate, { page: page });
+}
+
+const renderIdeaForm = async (req, res) => {
+    const page = "../sections/forms/request";
+    res.render(boilerplate, { page: page });
 }
 
 const renderWIP = async (req, res) => {
     res.render(boilerplate, { page: "../sections/wip" })
 }
 
-const renderWelcome = async (req, res) => {
-    res.render(boilerplate, { page: "../sections/welcome" })
+const enroll = async (req, res) => {
+    // TODO
+    return;
 }
+
+const contact = async (req, res) => {
+    // TODO
+    return;
+}
+
+const shareIdea = async (req, res) => {
+    // TODO
+    return;
+}
+
+
 
 module.exports = {
     renderHomePage,
@@ -90,6 +102,11 @@ module.exports = {
     renderFaqPage,
     renderEventsPage,
     renderArgePage,
-    renderFormPage,
-    renderWelcome
+    renderWelcome,
+    renderEnrollForm,
+    renderContactForm,
+    renderIdeaForm,
+    enroll,
+    contact,
+    shareIdea
 }
