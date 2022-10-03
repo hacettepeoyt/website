@@ -80,18 +80,30 @@ const renderWIP = async (req, res) => {
 }
 
 const enroll = async (req, res) => {
-    // TODO
-    return;
+    console.log("POST Enroll");
+    
+    const newMember = {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        studentID: req.body.studentID,
+        degree: req.body.degree,
+        email: req.body.email,
+        department: req.body.department,
+        mobileNumber: req.body.mobileNumber,
+        groupChats: 3                           // TODO @div72
+    }
+
+    Member.insertMany(newMember);
 }
 
 const contact = async (req, res) => {
-    // TODO
-    return;
+    console.log("POST Contact");
+    console.log(req.body);
 }
 
 const shareIdea = async (req, res) => {
-    // TODO
-    return;
+    console.log("POST Idea");
+    console.log(req.body);
 }
 
 
