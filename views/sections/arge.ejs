@@ -1,0 +1,110 @@
+<div class="row mx-auto">
+    <div id="greater-projects-container" class="bg-white col-11 col-xl-10 container-fluid mx-auto">
+        <div class="row">
+            <div id="projects-container" class="bg-white col-12 px-1 px-sm-2 px-lg-4 mx-auto">
+                <div class="row mx-auto px-1 px-sm-1 py-2 my-4">
+                    <div class="mt-2 text-center p-0">
+                        <h2>Projelerimiz</h2>
+                    </div>
+                    <% for (const [index, project] of projects.entries()) { %>
+                        <div class="col-6 col-md-4 col-xl-3 my-1 my-sm-3 px-1 px-md-2 px-xl-4 py-xl-2">
+                            <div class="card rounded h-100 event-card-inner shadow bg-light" data-bs-toggle="modal"
+                                data-bs-target="#exampleProjectModal<%=index%>">
+                                <div class="card-body d-flex flex-column p-3">
+                                    <img src="<%= project.img %> >" alt="" class="img-fluid d-block mx-auto mb-3">
+                                    <h4 class="mb-3">
+                                        <%= project.name %>
+                                    </h4>
+                                    <button class="btn events-color mt-auto border-0">Detaylar &gt;</button>
+                                    <!-- .events-color in arge page? amogus. -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="exampleProjectModal<%= index %>" tabindex="-1"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <button type="button" class="ms-auto btn-lg btn-close position-absolute p-4"
+                                        data-bs-dismiss="modal" style="z-index: 999; top:0; right:0;"
+                                        aria-label="Close"></button>
+                                    <div class="modal-body card rounded border-1 h-100 p-4">
+                                        <div class="d-flex flex-column">
+                                            <img src="<%= project.img %> >" alt=""
+                                                class="img-fluid d-block mx-auto mb-4" style="max-height: 200px;">
+                                            <h3 class="mb-3 text-center">
+                                                <%= project.name %>
+                                            </h3>
+                                            <div class="progress mb-3">
+                                                <div class="progress-bar <%= project.status === 100 ? " bg-success"
+                                                    : " progress-bar-striped progress-bar-animated" %>"
+                                                    role="progressbar" style=<%= 'width:' + project.status + '%' %>
+                                                        aria-valuenow="<%= project.status %>" aria-valuemin="0"
+                                                            aria-valuemax="100"></div>
+                                            </div>
+                                            <p class="medium mb-3">
+                                                <%= project.description %>
+                                            </p>
+                                            <div class="mb-3 text-muted">
+                                                <% if (project.status===100) { %>
+                                                    Bu projemiz %100 tamamlandı!<br />
+                                                    Ama yine de projeyi geliştirmek için aklında başka fikirler varsa ya
+                                                    da
+                                                    sadece kaynak kodlarını incelemek istiyorsan projenin GitHub linkine
+                                                    aşağıdan ulaşabilirsin!
+
+                                                    <% } else if (project.status===0) { %>
+                                                        Bu projemize henüz hiç başlayamadık :-( <br />
+                                                        İlk adımı atarak bu projenin lideri olmak istersen projenin
+                                                        GitHub linkine aşağıdan ulaşabilirsin!
+                                                        <% } else { %>
+                                                            Bu projemizi yaklaşık olarak %<%= project.status %> oranında
+                                                                tamamladık! <br />
+                                                                Projenin geliştirilmesine katkıda bulunmak ya da sadece
+                                                                kaynak kodlarını incelemek istiyorsan projenin
+                                                                GitHub linkine aşağıdan ulaşabilirsin!
+                                                                <% } %>
+                                            </div>
+                                            <ul class="list-inline mb-2">
+                                                <li class="list-inline-item m-0">
+                                                    <i class="bi bi-github"></i>
+                                                    <span class="medium px-1">
+                                                        <a class="text-decoration-none" href="<%= project.repository %>"
+                                                            target="_blank" rel="noopener noreferrer">
+                                                            <%= project.repository %>
+                                                        </a>
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <% } %>
+                </div>
+            </div>
+            <div id="project-idea-container" class="col-12 px-1 px-sm-2 px-lg-3 px-xl-5 mx-auto">
+                <div class="courses-color rounded shadow p-2">
+                    <!-- .courses-color in arge page? amogus. -->
+                    <div class="row mx-auto px-1 px-sm-1 py-2 my-4">
+                        <div class="col-12 col-sm-7 medium">
+                            <div class="mx-0 mt-0 mb-3 p-0">
+                                <h2>Bir Fikrim Var!</h2>
+                            </div>
+                            Yeni bir proje fikrin mi var? <br/>
+                            Beraber çalışabileceğin takım arkadaşları mı arıyorsun? <br/>
+                            Gönder gelsin!<br/>
+                        </div>
+                        <div class="col-12 col-sm-5 d-flex">
+                            <div class="mx-auto mx-sm-0 ms-sm-auto my-auto pt-3">
+                                <button class="btn btn-lg bg-light shadow border-1" onclick="location.href='/forms/request'">
+                                    Proje Başvurusu Yap &gt;
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

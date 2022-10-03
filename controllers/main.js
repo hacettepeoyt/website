@@ -44,8 +44,6 @@ const renderEventsPage = async (req, res) => {
 }
 
 const renderArgePage = async (req, res) => {
-    await renderWIP(req, res);
-    return;
     try {
         const page = "../sections/arge";
         const projects = await Project.find({});
@@ -67,7 +65,9 @@ const renderFormPage = async (req, res) => {
         } else if (form === 'enroll') {
             res.render(boilerplate, { page: enrollPage });
         } else if (form == 'request') {
-            res.render(boilerplate, { page: requestPage });
+            await renderWIP(req, res);
+            return;
+            //res.render(boilerplate, { page: requestPage });
         } else {
             throw Error;
         }
