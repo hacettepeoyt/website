@@ -19,5 +19,9 @@ router.post('/event', controller.newEvent);
 router.post('/course', controller.newCourse);
 router.post('/arge', controller.newProject);
 
+router.delete('/event', controller.deleteEvent);
+router.delete('/course', controller.deleteCourse);
+router.delete('/arge', controller.deleteProject);
+
 
 module.exports = router;

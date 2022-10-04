@@ -168,6 +168,39 @@ const newProject = async (req, res) => {
     }
 }
 
+const deleteEvent = async (req, res) => {
+    data = req.body;
+
+    if (data.auth === process.env.POST_AUTH) {
+        Event.findOneAndDelete({ name: data.name });
+        res.status(200).send()
+    } else {
+        res.status(401).send()
+    }
+}
+
+const deleteCourse = async (req, res) => {
+    data = req.body;
+
+    if (data.auth === process.env.POST_AUTH) {
+        Course.findOneAndDelete({ name: data.name });
+        res.status(200).send()
+    } else {
+        res.status(401).send()
+    }
+}
+
+const deleteProject = async (req, res) => {
+    data = req.body;
+
+    if (data.auth === process.env.POST_AUTH) {
+        Project.findOneAndDelete({ name: data.name });
+        res.status(200).send()
+    } else {
+        res.status(401).send()
+    }
+}
+
 
 
 module.exports = {
@@ -185,5 +218,8 @@ module.exports = {
     shareIdea,
     newEvent,
     newCourse,
-    newProject
+    newProject,
+    deleteEvent,
+    deleteCourse,
+    deleteProject
 }
