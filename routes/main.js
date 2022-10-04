@@ -23,5 +23,9 @@ router.delete('/event', controller.deleteEvent);
 router.delete('/course', controller.deleteCourse);
 router.delete('/arge', controller.deleteProject);
 
+router.patch('/event', controller.updateEvent);
+router.patch('/course', controller.updateCourse);
+router.patch('/arge', controller.updateProject);
+
 
 module.exports = router;

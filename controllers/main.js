@@ -201,6 +201,68 @@ const deleteProject = async (req, res) => {
     }
 }
 
+const updateEvent = async (req, res) => {
+    data = req.body;
+
+    if (data.auth === process.env.POST_AUTH) {
+        const event = {
+            img: data.img,
+            name: data.name,
+            description: data.description,
+            location: data.location,
+            time: data.time,
+            date: data.date,
+            duration: data.duration
+        }
+
+        Event.findOneAndUpdate({ name: data.name }, event, { runValidators: true, new: true });
+        res.status(200).send()
+    } else {
+        res.status(401).send()
+    }
+}
+
+const updateCourse = async (req, res) => {
+    data = req.body;
+
+    if (data.auth === process.env.POST_AUTH) {
+        const course = {
+            img: data.img,
+            name: data.name,
+            description: data.description,
+            preRequisite: data.preRequisite,
+            location: data.location,
+            time: data.time,
+            date: data.date,
+            duration: data.duration
+        }
+
+        Course.findOneAndUpdate({ name: data.name }, course, { runValidators: true, new: true });
+        res.status(200).send()
+    } else {
+        res.status(401).send()
+    }
+}
+
+const updateProject = async (req, res) => {
+    data = req.body;
+
+    if (data.auth === process.env.POST_AUTH) {
+        const project = {
+            img: data.img,
+            name: data.name,
+            description: data.description,
+            status: data.status,
+            repository: data.repository
+        }
+
+        Project.findOneAndUpdate({ name: data.name }, project, { runValidators: true, new: true });
+        res.status(200).send()
+    } else {
+        res.status(401).send()
+    }
+}
+
 
 
 module.exports = {
@@ -221,5 +283,8 @@ module.exports = {
     newProject,
     deleteEvent,
     deleteCourse,
-    deleteProject
+    deleteProject,
+    updateEvent,
+    updateCourse,
+    updateProject
 }
