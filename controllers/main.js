@@ -10,6 +10,7 @@ const errorPage = "../error";
 
 
 // TODO new solution for error handling instead of try-catch
+// TODO Reorganise the controller
 
 
 const renderHomePage = async (req, res) => {
@@ -120,7 +121,7 @@ const newEvent = async (req, res) => {
             duration: data.duration
         }
 
-        Event.insertMany(event)
+        await Event.insertMany(event)
         res.status(200).send();
     } else {
         res.status(401).send();
@@ -142,7 +143,7 @@ const newCourse = async (req, res) => {
             duration: data.duration
         }
 
-        Course.insertMany(course)
+        await Course.insertMany(course)
         res.status(200).send();
     } else {
         res.status(401).send();
@@ -161,7 +162,7 @@ const newProject = async (req, res) => {
             repository: data.repository
         }
 
-        Project.insertMany(project)
+        await Project.insertMany(project)
         res.status(200).send();
     } else {
         res.status(401).send();
@@ -172,7 +173,7 @@ const deleteEvent = async (req, res) => {
     data = req.body;
 
     if (data.auth === process.env.POST_AUTH) {
-        Event.findOneAndDelete({ name: data.name });
+        await Event.findOneAndDelete({ name: data.name });
         res.status(200).send()
     } else {
         res.status(401).send()
@@ -183,7 +184,7 @@ const deleteCourse = async (req, res) => {
     data = req.body;
 
     if (data.auth === process.env.POST_AUTH) {
-        Course.findOneAndDelete({ name: data.name });
+        await Course.findOneAndDelete({ name: data.name });
         res.status(200).send()
     } else {
         res.status(401).send()
@@ -194,7 +195,7 @@ const deleteProject = async (req, res) => {
     data = req.body;
 
     if (data.auth === process.env.POST_AUTH) {
-        Project.findOneAndDelete({ name: data.name });
+        await Project.findOneAndDelete({ name: data.name });
         res.status(200).send()
     } else {
         res.status(401).send()
@@ -215,7 +216,7 @@ const updateEvent = async (req, res) => {
             duration: data.duration
         }
 
-        Event.findOneAndUpdate({ name: data.name }, event, { runValidators: true, new: true });
+        await Event.findOneAndUpdate({ name: data.name }, event, { runValidators: true, new: true });
         res.status(200).send()
     } else {
         res.status(401).send()
@@ -237,7 +238,7 @@ const updateCourse = async (req, res) => {
             duration: data.duration
         }
 
-        Course.findOneAndUpdate({ name: data.name }, course, { runValidators: true, new: true });
+        await Course.findOneAndUpdate({ name: data.name }, course, { runValidators: true, new: true });
         res.status(200).send()
     } else {
         res.status(401).send()
@@ -256,7 +257,7 @@ const updateProject = async (req, res) => {
             repository: data.repository
         }
 
-        Project.findOneAndUpdate({ name: data.name }, project, { runValidators: true, new: true });
+        await Project.findOneAndUpdate({ name: data.name }, project, { runValidators: true, new: true });
         res.status(200).send()
     } else {
         res.status(401).send()
