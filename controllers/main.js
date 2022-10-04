@@ -106,6 +106,68 @@ const shareIdea = async (req, res) => {
     console.log(req.body);
 }
 
+const newEvent = async (req, res) => {
+    data = req.body;
+
+    if (data.auth === process.env.POST_AUTH) {
+        const event = {
+            img: data.img,
+            name: data.name,
+            description: data.description,
+            location: data.location,
+            time: data.time,
+            date: data.date,
+            duration: data.duration
+        }
+
+        Event.insertMany(event)
+        res.status(200).send();
+    } else {
+        res.status(401).send();
+    }
+}
+
+const newCourse = async (req, res) => {
+    data = req.body;
+
+    if (data.auth === process.env.POST_AUTH) {
+        const course = {
+            img: data.img,
+            name: data.name,
+            description: data.description,
+            preRequisite: data.preRequisite,
+            location: data.location,
+            time: data.time,
+            date: data.date,
+            duration: data.duration
+        }
+
+        Course.insertMany(course)
+        res.status(200).send();
+    } else {
+        res.status(401).send();
+    }
+}
+
+const newProject = async (req, res) => {
+    data = req.body;
+
+    if (data.auth === process.env.POST_AUTH) {
+        const project = {
+            img: data.img,
+            name: data.name,
+            description: data.description,
+            status: data.status,
+            repository: data.repository
+        }
+
+        Project.insertMany(project)
+        res.status(200).send();
+    } else {
+        res.status(401).send();
+    }
+}
+
 
 
 module.exports = {
@@ -120,5 +182,8 @@ module.exports = {
     renderIdeaForm,
     enroll,
     contact,
-    shareIdea
+    shareIdea,
+    newEvent,
+    newCourse,
+    newProject
 }

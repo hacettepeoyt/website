@@ -15,6 +15,9 @@ router.get('/idea', controller.renderIdeaForm);
 router.post('/enroll', controller.enroll);
 router.post('/contact', controller.contact);
 router.post('/idea', controller.shareIdea);
+router.post('/event', controller.newEvent);
+router.post('/course', controller.newCourse);
+router.post('/arge', controller.newProject);
 
 
 module.exports = router;
