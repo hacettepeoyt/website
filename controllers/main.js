@@ -110,7 +110,7 @@ const shareIdea = async (req, res) => {
 const newEvent = async (req, res) => {
     data = req.body;
 
-    if (data.auth === process.env.POST_AUTH) {
+    if (data.auth === process.env.AUTH_KEY) {
         const event = {
             img: data.img,
             name: data.name,
@@ -131,7 +131,7 @@ const newEvent = async (req, res) => {
 const newCourse = async (req, res) => {
     data = req.body;
 
-    if (data.auth === process.env.POST_AUTH) {
+    if (data.auth === process.env.AUTH_KEY) {
         const course = {
             img: data.img,
             name: data.name,
@@ -153,7 +153,7 @@ const newCourse = async (req, res) => {
 const newProject = async (req, res) => {
     data = req.body;
 
-    if (data.auth === process.env.POST_AUTH) {
+    if (data.auth === process.env.AUTH_KEY) {
         const project = {
             img: data.img,
             name: data.name,
@@ -172,7 +172,7 @@ const newProject = async (req, res) => {
 const deleteEvent = async (req, res) => {
     data = req.body;
 
-    if (data.auth === process.env.POST_AUTH) {
+    if (data.auth === process.env.AUTH_KEY) {
         await Event.findOneAndDelete({ name: data.name });
         res.status(200).send()
     } else {
@@ -183,7 +183,7 @@ const deleteEvent = async (req, res) => {
 const deleteCourse = async (req, res) => {
     data = req.body;
 
-    if (data.auth === process.env.POST_AUTH) {
+    if (data.auth === process.env.AUTH_KEY) {
         await Course.findOneAndDelete({ name: data.name });
         res.status(200).send()
     } else {
@@ -194,7 +194,7 @@ const deleteCourse = async (req, res) => {
 const deleteProject = async (req, res) => {
     data = req.body;
 
-    if (data.auth === process.env.POST_AUTH) {
+    if (data.auth === process.env.AUTH_KEY) {
         await Project.findOneAndDelete({ name: data.name });
         res.status(200).send()
     } else {
@@ -205,7 +205,7 @@ const deleteProject = async (req, res) => {
 const updateEvent = async (req, res) => {
     data = req.body;
 
-    if (data.auth === process.env.POST_AUTH) {
+    if (data.auth === process.env.AUTH_KEY) {
         const event = {
             img: data.img,
             name: data.name,
@@ -226,7 +226,7 @@ const updateEvent = async (req, res) => {
 const updateCourse = async (req, res) => {
     data = req.body;
 
-    if (data.auth === process.env.POST_AUTH) {
+    if (data.auth === process.env.AUTH_KEY) {
         const course = {
             img: data.img,
             name: data.name,
@@ -248,7 +248,7 @@ const updateCourse = async (req, res) => {
 const updateProject = async (req, res) => {
     data = req.body;
 
-    if (data.auth === process.env.POST_AUTH) {
+    if (data.auth === process.env.AUTH_KEY) {
         const project = {
             img: data.img,
             name: data.name,
