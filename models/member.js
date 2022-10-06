@@ -38,8 +38,9 @@ const memberSchema = new mongoose.Schema({
         required: true
     },
 
-    groupChats: {
-        type: Number,
+    groupChat: {
+        type: String,
+        enum: ["Signal", "Telegram", "WhatsApp", "-"],
         required: true
     }
 })
