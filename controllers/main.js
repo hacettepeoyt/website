@@ -170,9 +170,9 @@ const newEvent = async (req, res) => {
         }
 
         await Event.insertMany(event)
-        res.status(200).send();
+        res.sendStatus(200);
     } else {
-        res.status(401).send();
+        res.sendStatus(401);
     }
 }
 
@@ -192,9 +192,9 @@ const newCourse = async (req, res) => {
         }
 
         await Course.insertMany(course)
-        res.status(200).send();
+        res.sendStatus(200);
     } else {
-        res.status(401).send();
+        res.sendStatus(401);
     }
 }
 
@@ -211,9 +211,9 @@ const newProject = async (req, res) => {
         }
 
         await Project.insertMany(project)
-        res.status(200).send();
+        res.sendStatus(200);
     } else {
-        res.status(401).send();
+        res.sendStatus(401);
     }
 }
 
@@ -222,9 +222,9 @@ const deleteEvent = async (req, res) => {
 
     if (data.auth === process.env.AUTH_KEY) {
         await Event.findOneAndDelete({ name: data.name });
-        res.status(200).send()
+        res.sendStatus(200);
     } else {
-        res.status(401).send()
+        res.sendStatus(401);
     }
 }
 
@@ -233,9 +233,9 @@ const deleteCourse = async (req, res) => {
 
     if (data.auth === process.env.AUTH_KEY) {
         await Course.findOneAndDelete({ name: data.name });
-        res.status(200).send()
+        res.sendStatus(200);
     } else {
-        res.status(401).send()
+        res.sendStatus(401);
     }
 }
 
@@ -244,9 +244,9 @@ const deleteProject = async (req, res) => {
 
     if (data.auth === process.env.AUTH_KEY) {
         await Project.findOneAndDelete({ name: data.name });
-        res.status(200).send()
+        res.sendStatus(200);
     } else {
-        res.status(401).send()
+        res.sendStatus(401);
     }
 }
 
@@ -265,9 +265,9 @@ const updateEvent = async (req, res) => {
         }
 
         await Event.findOneAndUpdate({ name: data.name }, event, { runValidators: true, new: true });
-        res.status(200).send()
+        res.sendStatus(200);
     } else {
-        res.status(401).send()
+        res.sendStatus(401);
     }
 }
 
@@ -287,9 +287,9 @@ const updateCourse = async (req, res) => {
         }
 
         await Course.findOneAndUpdate({ name: data.name }, course, { runValidators: true, new: true });
-        res.status(200).send()
+        res.sendStatus(200);
     } else {
-        res.status(401).send()
+        res.sendStatus(401);
     }
 }
 
@@ -306,9 +306,9 @@ const updateProject = async (req, res) => {
         }
 
         await Project.findOneAndUpdate({ name: data.name }, project, { runValidators: true, new: true });
-        res.status(200).send()
+        res.sendStatus(200);
     } else {
-        res.status(401).send()
+        res.sendStatus(401);
     }
 }
 
