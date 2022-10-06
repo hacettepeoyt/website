@@ -39,7 +39,7 @@ const seedMembers = [
         email: "messi@barcelona.com",
         department: "Yapay Zeka Mühendisliği",
         mobileNumber: "05100001010",
-        groupChats: "-"
+        groupChat: "-"
     }
 ]
 
