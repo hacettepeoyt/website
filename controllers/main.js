@@ -1,3 +1,5 @@
+const https = require("https");
+
 const content = require('../models/content');
 const Member = require('../models/member');
 const Faq = content.Faq;
@@ -80,6 +82,28 @@ const renderWIP = async (req, res) => {
     res.render(boilerplate, { page: "../sections/wip" })
 }
 
+function sendMessageToAdminRoom(message) {
+    const body = JSON.stringify({
+        msgtype: "m.text",
+        body: message
+    });
+
+    var post_options = {
+        host: 'matrix.org',
+        path: `/_matrix/client/r0/rooms/${process.env.MATRIX_ADMIN_ROOM}/send/m.room.message?access_token=${process.env.MATRIX_ACCESS_TOKEN}`,
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Content-Length': body.length
+        }
+    }
+
+    // TODO: Error handling.
+    const matrix_req = https.request(post_options);
+    matrix_req.write(body);
+    matrix_req.end();
+}
+
 const enroll = async (req, res) => {
     console.log("POST Enroll");
     
@@ -100,11 +124,29 @@ const enroll = async (req, res) => {
 const contact = async (req, res) => {
     console.log("POST Contact");
     console.log(req.body);
+    const message = `Someone used the contact form:
+----
+Name: ${req.body.firstname}
+Surname: ${req.body.lastname}
+E-mail: ${req.body.email}
+----
+${req.body.message}`;
+    sendMessageToAdminRoom(message);
 }
 
 const shareIdea = async (req, res) => {
     console.log("POST Idea");
     console.log(req.body);
+    const message = `Someone used the idea form:
+----
+Name: ${req.body.firstname}
+Surname: ${req.body.lastname}
+E-mail: ${req.body.email}
+----
+${req.body.projectName}
+
+${req.body.projectDesc}`;
+    sendMessageToAdminRoom(message);
 }
 
 const newEvent = async (req, res) => {
