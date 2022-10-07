@@ -74,7 +74,7 @@ const renderContactForm = async (req, res) => {
 }
 
 const renderIdeaForm = async (req, res) => {
-    const page = "../sections/forms/request";
+    const page = "../sections/forms/idea";
     res.render(boilerplate, { page: page });
 }
 
