@@ -1,40 +1,47 @@
 <div class="container">
 
     <div class="row py-5">
-        <div class="col-lg-9 mx-auto text-white text-center">
+        <div class="col-lg-9 mx-auto text-black text-center">
             <h1 class="display-4">Sıkça Sorulan Sorular</h1>
         </div>
     </div>
 
-
     <div class="row">
-        <div class="col-lg-9 mx-auto">
-            <p>Henüz hiç sık sorulan soru yok, soruldukça ekleriz. =P</p>
-            <div id="accordionExample" class="accordion shadow">
+        <div class="accordion" id="faq-accordionPanels">
 
-                <% let i=1 %>
-                <% for(faq of faqs) { %>
-                    <div class="card">
+            <% if (faqs.length === 0) { %>
 
-                        <!-- QUESTION -->
-                        <div id=<%= `heading${i}` %> class="card-header bg-white shadow-sm border-0" >
-                            <h2 class="mb-0">
-                                <button type="button" data-toggle="collapse" data-target=<%= `#collapse${i}` %> aria-controls= <%= `collapse${i}` %> class="btn text-dark font-weight-bold collapsible-link"><%= faq.question %>
+                <p>Henüz hiç sık sorulan soru yok, soruldukça ekleriz. =P</p>
+
+            <% } else { %>
+
+                <div class="accordion" id="faq-accordion">
+
+                    <% for (const [i, faq] of faqs.entries()) { %>
+                        
+                        <div class="accordion-item">
+
+                            <!-- QUESTION -->
+                            <h2 class="accordion-header" id=<%=`heading${i}`%>>
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target=<%=`#collapse${i}`%> aria-expanded="false" aria-controls=<%=`collapse${i}`%>>
+                                    <%= faq.question %> 
+                                </button>
                             </h2>
-                        </div>
 
-                        <!-- ANSWER -->
-                        <div id=<%= `collapse${i}` %> aria-labelledby=<%= `heading${i}` %> data-parent="#accordionExample" class="collapse">
-                            <div class="card-body p-5">
-                                <p class="font-weight-light m-0"><%= faq.answer %></p>
+                            <!-- ANSWER -->
+                            <div id=<%=`collapse${i}`%> class="accordion-collapse collapse" aria-labelledby=<%=`heading${i}`%> data-bs-parent="#faq-accordion">
+                                <div class="accordion-body">
+                                    <%= faq.answer %> 
+                                </div>
                             </div>
                         </div>
 
-                    </div>
-                    <% i++ %>
-                <% } %>
+                    <% } %>
 
-            </div>
+                </div>
+
+            <% } %> 
+
         </div>
     </div>
 </div>
