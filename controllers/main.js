@@ -11,8 +11,7 @@ const boilerplate = "layouts/boilerplate";
 const errorPage = "../error";
 
 
-// TODO new solution for error handling instead of try-catch
-// TODO Reorganise the controller
+// TODO: Reorganise the controller
 
 
 const renderHomePage = async (req, res) => {
@@ -20,43 +19,23 @@ const renderHomePage = async (req, res) => {
 }
 
 const renderAboutPage = async (req, res) => {
-    try {
-        const page = "../sections/about";
-        res.render(boilerplate, { page });
-    } catch (err) {
-        res.render(boilerplate, { page: errorPage, err });
-    }
+    res.render(boilerplate, { page:"../sections/about" });
 }
 
 const renderFaqPage = async (req, res) => {
-    try {
-        const page = "../sections/faq";
-        const faqs = await Faq.find({});
-        res.render(boilerplate, { page, faqs });
-    } catch (err) {
-        res.render(boilerplate, { page: errorPage, err });
-    }
+    const faqs = await Faq.find({});
+    res.render(boilerplate, { page: "../sections/faq", faqs });
 }
 
 const renderEventsPage = async (req, res) => {
-    try {
-        const page = "../sections/events";
-        const events = await Event.find({});
-        const courses = await Course.find({});
-        res.render(boilerplate, { page, events, courses });
-    } catch (err) {
-        res.render(boilerplate, { page: errorPage, err });
-    }
+    const events = await Event.find({});
+    const courses = await Course.find({});
+    res.render(boilerplate, { page: "../sections/events", events, courses });
 }
 
 const renderArgePage = async (req, res) => {
-    try {
-        const page = "../sections/arge";
-        const projects = await Project.find({});
-        res.render(boilerplate, { page, projects });
-    } catch (err) {
-        res.render(boilerplate, { page: errorPage, err });
-    }
+    const projects = await Project.find({});
+    res.render(boilerplate, { page: "../sections/arge", projects });
 }
 
 const renderWelcome = async (req, res) => {
@@ -64,18 +43,15 @@ const renderWelcome = async (req, res) => {
 }
 
 const renderEnrollForm = async (req, res) => {
-    const page = "../sections/forms/enroll";
-    res.render(boilerplate, { page: page });
+    res.render(boilerplate, { page: "../sections/forms/enroll" });
 }
 
 const renderContactForm = async (req, res) => {
-    const page = "../sections/forms/contact";
-    res.render(boilerplate, { page: page });
+    res.render(boilerplate, { page: "../sections/forms/contact" });
 }
 
 const renderIdeaForm = async (req, res) => {
-    const page = "../sections/forms/idea";
-    res.render(boilerplate, { page: page });
+    res.render(boilerplate, { page: "../sections/forms/idea" });
 }
 
 const renderWIP = async (req, res) => {
@@ -83,8 +59,6 @@ const renderWIP = async (req, res) => {
 }
 
 const enroll = async (req, res) => {
-    // TODO: Error handling.
-    console.log("POST Enroll");
     const oldMember = await Member.findOne({studentID: req.body.studentID});
 
     if (!oldMember) {
@@ -106,8 +80,6 @@ const enroll = async (req, res) => {
 }
 
 const contact = async (req, res) => {
-    console.log("POST Contact");
-    console.log(req.body);
     const message = `Someone used the contact form:
 ----
 Name: ${req.body.firstname}
@@ -119,8 +91,6 @@ ${req.body.message}`;
 }
 
 const shareIdea = async (req, res) => {
-    console.log("POST Idea");
-    console.log(req.body);
     const message = `Someone used the idea form:
 ----
 Name: ${req.body.firstname}
@@ -134,17 +104,15 @@ ${req.body.projectDesc}`;
 }
 
 const newEvent = async (req, res) => {
-    data = req.body;
-
     if (data.auth === process.env.AUTH_KEY) {
         const event = {
-            img: data.img,
-            name: data.name,
-            description: data.description,
-            location: data.location,
-            time: data.time,
-            date: data.date,
-            duration: data.duration
+            img: req.body.img,
+            name: req.body.name,
+            description: req.body.description,
+            location: req.body.location,
+            time: req.body.time,
+            date: req.body.date,
+            duration: req.body.duration
         }
 
         await Event.insertMany(event)
@@ -159,14 +127,14 @@ const newCourse = async (req, res) => {
 
     if (data.auth === process.env.AUTH_KEY) {
         const course = {
-            img: data.img,
-            name: data.name,
-            description: data.description,
-            preRequisite: data.preRequisite,
-            location: data.location,
-            time: data.time,
-            date: data.date,
-            duration: data.duration
+            img: req.body.img,
+            name: req.body.name,
+            description: req.body.description,
+            preRequisite: req.body.preRequisite,
+            location: req.body.location,
+            time: req.body.time,
+            date: req.body.date,
+            duration: req.body.duration
         }
 
         await Course.insertMany(course)
@@ -177,15 +145,13 @@ const newCourse = async (req, res) => {
 }
 
 const newProject = async (req, res) => {
-    data = req.body;
-
     if (data.auth === process.env.AUTH_KEY) {
         const project = {
-            img: data.img,
-            name: data.name,
-            description: data.description,
-            status: data.status,
-            repository: data.repository
+            img: req.body.img,
+            name: req.body.name,
+            description: req.body.description,
+            status: req.body.status,
+            repository: req.body.repository
         }
 
         await Project.insertMany(project)
@@ -196,10 +162,8 @@ const newProject = async (req, res) => {
 }
 
 const deleteEvent = async (req, res) => {
-    data = req.body;
-
     if (data.auth === process.env.AUTH_KEY) {
-        await Event.findOneAndDelete({ name: data.name });
+        await Event.findOneAndDelete({ name: req.body.name });
         res.sendStatus(200);
     } else {
         res.sendStatus(401);
@@ -207,10 +171,8 @@ const deleteEvent = async (req, res) => {
 }
 
 const deleteCourse = async (req, res) => {
-    data = req.body;
-
     if (data.auth === process.env.AUTH_KEY) {
-        await Course.findOneAndDelete({ name: data.name });
+        await Course.findOneAndDelete({ name: req.body.name });
         res.sendStatus(200);
     } else {
         res.sendStatus(401);
@@ -218,10 +180,8 @@ const deleteCourse = async (req, res) => {
 }
 
 const deleteProject = async (req, res) => {
-    data = req.body;
-
     if (data.auth === process.env.AUTH_KEY) {
-        await Project.findOneAndDelete({ name: data.name });
+        await Project.findOneAndDelete({ name: req.body.name });
         res.sendStatus(200);
     } else {
         res.sendStatus(401);
@@ -229,8 +189,6 @@ const deleteProject = async (req, res) => {
 }
 
 const updateEvent = async (req, res) => {
-    data = req.body;
-
     if (data.auth === process.env.AUTH_KEY) {
         const event = {
             img: data.img,
@@ -242,7 +200,7 @@ const updateEvent = async (req, res) => {
             duration: data.duration
         }
 
-        await Event.findOneAndUpdate({ name: data.name }, event, { runValidators: true, new: true });
+        await Event.findOneAndUpdate({ name: req.body.name }, event, { runValidators: true, new: true });
         res.sendStatus(200);
     } else {
         res.sendStatus(401);
@@ -250,8 +208,6 @@ const updateEvent = async (req, res) => {
 }
 
 const updateCourse = async (req, res) => {
-    data = req.body;
-
     if (data.auth === process.env.AUTH_KEY) {
         const course = {
             img: data.img,
@@ -264,7 +220,7 @@ const updateCourse = async (req, res) => {
             duration: data.duration
         }
 
-        await Course.findOneAndUpdate({ name: data.name }, course, { runValidators: true, new: true });
+        await Course.findOneAndUpdate({ name: req.body.name }, course, { runValidators: true, new: true });
         res.sendStatus(200);
     } else {
         res.sendStatus(401);
@@ -272,8 +228,6 @@ const updateCourse = async (req, res) => {
 }
 
 const updateProject = async (req, res) => {
-    data = req.body;
-
     if (data.auth === process.env.AUTH_KEY) {
         const project = {
             img: data.img,
@@ -283,7 +237,7 @@ const updateProject = async (req, res) => {
             repository: data.repository
         }
 
-        await Project.findOneAndUpdate({ name: data.name }, project, { runValidators: true, new: true });
+        await Project.findOneAndUpdate({ name: req.body.name }, project, { runValidators: true, new: true });
         res.sendStatus(200);
     } else {
         res.sendStatus(401);
