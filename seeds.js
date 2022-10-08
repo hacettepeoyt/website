@@ -45,17 +45,19 @@ const seedMembers = [
 
 const seedFaqs = [
     {
-        question: "Nasılsın?",
-        answer: "İyiyim"
+        question: "What is Linux?",
+        answer: "It is one of the most fundamental questions as many people tend to confuse it a bit. Linux by itself is not an operating system, instead, it is the central and most important part of an OS called the Kernel. The kernel is the program inside the OS that has complete control over everything in the system and as such, it is the first program that loads up when the OS boots."
     },
     {
-        question: "Kaç yaşındasın?",
-        answer: "-1"
+        question: "What are Linux Distributions or Distros?",
+        answer: "As I’ve said earlier, Linux is just the Kernel and a Linux Distribution is the complete OS that contains Linux as their Kernel with added programs and other software based on what the OS is targeted towards. Distributions, in short, are referred to as Distros."
     },
     {
-        question: "Bu bir soru mu?",
-        answer: "Hayır"
+        question: "Where do I find help if I encounter any problem?",
+        answer: "Fear not, there are plenty of places to find help in Linux. Here at LinuxAndUbuntu, you’ll find excellent articles related to Linux like Installation Guides, Software Reviews, etc. Also, there are lots of forums and wikis that’ll help you out a lot when you have any queries or run into some problem. Popular distros even contain an IRC channel where you can directly ask someone when you face a problem."
     }
+
+    // Sample questions and answers belong to https://www.linuxandubuntu.com/home/linux-faqsfrequently-asked-questions-from-a-newbie-perspective
 ]
 
 const seedProjects = [
