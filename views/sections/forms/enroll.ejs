@@ -1,0 +1,120 @@
+<div class="container-sm align-items-center">
+    <div class="py-2 mt-4 align-items-center">
+        <h1>Topluluğumuza Katılın</h1>
+        <!-- Registration Form -->
+        <div class="ml-5 pt-3 align-items-center form-container">
+            <form action="/enroll" method="POST">
+                <div class="">
+
+                    <!-- First Name -->
+                    <div class="input-group col-lg-6 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="px-1 border-md border-right-0 me-2">
+                                <img class="" src="/public/icon/profile.png">
+                            </span>
+                        </div>
+                        <input id="firstName" type="text" name="firstName" placeholder="İsim" class="form-control bg-white border-left-0 border-md">
+                    </div>
+
+                    <!-- Last Name -->
+                    <div class="input-group col-lg-6 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="px-1 border-md border-right-0 me-2">
+                                <img class="" src="/public/icon/profile.png">
+                            </span>
+                        </div>
+                        <input id="lastName" type="text" name="lastName" placeholder="Soyisim" class="form-control bg-white border-left-0 border-md">
+                    </div>
+
+                    <!-- Email Address -->
+                    <div class="input-group col-lg-12 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="px-1 border-md border-right-0 me-2">
+                                <img class="" src="/public/icon/mail.png">
+                            </span>
+                        </div>
+                        <input id="email" type="email" name="email" placeholder="Mail Adresi" class="form-control bg-white border-left-0 border-md">
+                    </div>
+
+                    <!-- Department -->
+                    <div class="input-group col-lg-12 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="px-1 border-md border-right-0 me-2">
+                                <img class="" src="/public/icon/department.png">
+                            </span>
+                        </div>
+                        <input id="department" type="text" name="department" placeholder="Bölümünüz" class="form-control bg-white border-left-0 border-md">
+                    </div>
+
+                    <!-- Degree -->
+                    <div class="input-group col-lg-12 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="px-1 border-md border-right-0 me-2">
+                                <img class="" src="/public/icon/class.png">
+                            </span>
+                        </div>
+                        <select class="form-control" id="class" name="degree">
+                            <option hidden required>Sınıfınız ↓</option>
+                            <option>Hazırlık</option>
+                            <option>1. Sınıf</option>
+                            <option>2. Sınıf</option>
+                            <option>3. Sınıf</option>
+                            <option>4. Sınıf</option>
+                        </select>
+                    </div>
+
+
+                    <!-- Phone Number -->
+                    <div class="input-group col-lg-6 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="px-1 border-md border-right-0 me-2">
+                                <img class="" src="/public/icon/phone.png">
+                            </span>
+                        </div>
+                        <input id="phoneNumber" type="tel" name="mobileNumber" placeholder="Telefon Numarası" class="form-control bg-white border-md border-left-0">
+                    </div>
+
+                    <!-- Student Number -->
+                    <div class="input-group col-lg-12 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="px-1 border-md border-right-0 me-2">
+                                <img class="" src="/public/icon/student-number.png">
+                            </span>
+                        </div>
+                        <input id="studentNumber" type="tel" name="studentID" placeholder="Öğrenci Numarası" class="form-control bg-white border-left-0 border-md">
+                    </div>
+
+                    <!-- Social -->
+                    <div class="input-group col-lg-12 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="px-1 border-md border-right-0 me-2">
+                                <img class="" src="/public/icon/social.png">
+                            </span>
+                        </div>
+
+                        <div class="form-check pe-3">
+                            <input class="form-check-input" type="radio" name="groupChat" id="signal-radio" value="Signal" checked>
+                            <label class="form-check-label" for="signal-radio">Signal</label>
+                        </div>
+
+                        <div class="form-check pe-3">
+                            <input class="form-check-input" type="radio" name="groupChat" id="telegram-radio" value="Telegram">
+                            <label class="form-check-label" for="telegram-radio">Telegram</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="groupChat" id="whatsapp-radio" value="WhatsApp">
+                            <label class="form-check-label" for="whatsapp-radio">WhatsApp</label>
+                        </div>
+
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="form-group mb-0" style="margin-left: 47px;">
+                        <input id="signup-btn" class="btn btn-outline" type="submit" value="Üye Ol">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

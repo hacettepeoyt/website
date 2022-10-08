@@ -1,3 +1,9 @@
+/* Body adjustment*/
+
+body{
+    padding-top: 75px;
+}
+
 /*                    */
 /* Navbar adjustments */
 /*                    */
@@ -6,11 +12,14 @@
     font-family: "terminal-font";
     src: url("../font/bold.ttf");
 }
-
 .navbar-brand-logo{
     position:relative;
     width: 200px;
-    left: 40px;
+    left: 16%;
+}
+
+.active{
+    color: #cc3400 !important;
 }
 
 #signup-btn{
@@ -53,9 +62,7 @@
     color: darkgray;
 }
 
-.nav-link:focus{
-    color: white;
-}
+
 
 
 
