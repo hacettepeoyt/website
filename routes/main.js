@@ -18,6 +18,7 @@ router.post('/idea', controller.shareIdea);
 router.post('/event', controller.newEvent);
 router.post('/course', controller.newCourse);
 router.post('/arge', controller.newProject);
+router.post('/members', controller.getMembers)
 
 router.delete('/event', controller.deleteEvent);
 router.delete('/course', controller.deleteCourse);

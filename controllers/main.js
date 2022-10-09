@@ -19,7 +19,7 @@ const renderHomePage = async (req, res) => {
 }
 
 const renderAboutPage = async (req, res) => {
-    res.render(boilerplate, { page:"../sections/about" });
+    res.render(boilerplate, { page: "../sections/about" });
 }
 
 const renderFaqPage = async (req, res) => {
@@ -59,7 +59,7 @@ const renderWIP = async (req, res) => {
 }
 
 const enroll = async (req, res) => {
-    const oldMember = await Member.findOne({studentID: req.body.studentID});
+    const oldMember = await Member.findOne({ studentID: req.body.studentID });
 
     if (!oldMember) {
         const newMember = {
@@ -72,7 +72,7 @@ const enroll = async (req, res) => {
             mobileNumber: req.body.mobileNumber,
             groupChat: req.body.groupChat
         }
-    
+
         await Member.insertMany(newMember);
     }
 
@@ -242,6 +242,21 @@ const updateProject = async (req, res) => {
     }
 }
 
+const getMembers = async (req, res) => {
+    if (req.body.auth === process.env.AUTH_KEY) {
+        const members = await Member.find({});
+        let csv = "";
+
+        for (const member of members) {
+            csv += `${member.firstName},${member.lastName},${member.studentID},${member.degree},${member.email},${member.department},${member.mobileNumber},${member.groupChat}`;
+            csv += "\r\n";
+        }
+        res.send(csv);
+    } else {
+        res.sendStatus(401);
+    }
+}
+
 
 
 module.exports = {
@@ -265,5 +280,6 @@ module.exports = {
     deleteProject,
     updateEvent,
     updateCourse,
-    updateProject
+    updateProject,
+    getMembers
 }
