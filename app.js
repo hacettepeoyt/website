@@ -1,5 +1,6 @@
 require("dotenv").config();
 const express = require("express");
+require("./express-async-errors");
 const connectToMongo = require("./database/connection");
 const mainRoute = require("./routes/main");
 const path = require("path");
