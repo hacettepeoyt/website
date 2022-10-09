@@ -104,7 +104,7 @@ ${req.body.projectDesc}`;
 }
 
 const newEvent = async (req, res) => {
-    if (data.auth === process.env.AUTH_KEY) {
+    if (req.body.auth === process.env.AUTH_KEY) {
         const event = {
             img: req.body.img,
             name: req.body.name,
@@ -123,9 +123,7 @@ const newEvent = async (req, res) => {
 }
 
 const newCourse = async (req, res) => {
-    data = req.body;
-
-    if (data.auth === process.env.AUTH_KEY) {
+    if (req.body.auth === process.env.AUTH_KEY) {
         const course = {
             img: req.body.img,
             name: req.body.name,
@@ -145,7 +143,7 @@ const newCourse = async (req, res) => {
 }
 
 const newProject = async (req, res) => {
-    if (data.auth === process.env.AUTH_KEY) {
+    if (req.body.auth === process.env.AUTH_KEY) {
         const project = {
             img: req.body.img,
             name: req.body.name,
@@ -162,7 +160,7 @@ const newProject = async (req, res) => {
 }
 
 const deleteEvent = async (req, res) => {
-    if (data.auth === process.env.AUTH_KEY) {
+    if (req.body.auth === process.env.AUTH_KEY) {
         await Event.findOneAndDelete({ name: req.body.name });
         res.sendStatus(200);
     } else {
@@ -171,7 +169,7 @@ const deleteEvent = async (req, res) => {
 }
 
 const deleteCourse = async (req, res) => {
-    if (data.auth === process.env.AUTH_KEY) {
+    if (req.body.auth === process.env.AUTH_KEY) {
         await Course.findOneAndDelete({ name: req.body.name });
         res.sendStatus(200);
     } else {
@@ -180,7 +178,7 @@ const deleteCourse = async (req, res) => {
 }
 
 const deleteProject = async (req, res) => {
-    if (data.auth === process.env.AUTH_KEY) {
+    if (req.body.auth === process.env.AUTH_KEY) {
         await Project.findOneAndDelete({ name: req.body.name });
         res.sendStatus(200);
     } else {
@@ -189,15 +187,15 @@ const deleteProject = async (req, res) => {
 }
 
 const updateEvent = async (req, res) => {
-    if (data.auth === process.env.AUTH_KEY) {
+    if (req.body.auth === process.env.AUTH_KEY) {
         const event = {
-            img: data.img,
-            name: data.name,
-            description: data.description,
-            location: data.location,
-            time: data.time,
-            date: data.date,
-            duration: data.duration
+            img: req.body.img,
+            name: req.body.name,
+            description: req.body.description,
+            location: req.body.location,
+            time: req.body.time,
+            date: req.body.date,
+            duration: req.body.duration
         }
 
         await Event.findOneAndUpdate({ name: req.body.name }, event, { runValidators: true, new: true });
@@ -208,16 +206,16 @@ const updateEvent = async (req, res) => {
 }
 
 const updateCourse = async (req, res) => {
-    if (data.auth === process.env.AUTH_KEY) {
+    if (req.body.auth === process.env.AUTH_KEY) {
         const course = {
-            img: data.img,
-            name: data.name,
-            description: data.description,
-            preRequisite: data.preRequisite,
-            location: data.location,
-            time: data.time,
-            date: data.date,
-            duration: data.duration
+            img: req.body.img,
+            name: req.body.name,
+            description: req.body.description,
+            preRequisite: req.body.preRequisite,
+            location: req.body.location,
+            time: req.body.time,
+            date: req.body.date,
+            duration: req.body.duration
         }
 
         await Course.findOneAndUpdate({ name: req.body.name }, course, { runValidators: true, new: true });
@@ -228,13 +226,13 @@ const updateCourse = async (req, res) => {
 }
 
 const updateProject = async (req, res) => {
-    if (data.auth === process.env.AUTH_KEY) {
+    if (req.body.auth === process.env.AUTH_KEY) {
         const project = {
-            img: data.img,
-            name: data.name,
-            description: data.description,
-            status: data.status,
-            repository: data.repository
+            img: req.body.img,
+            name: req.body.name,
+            description: req.body.description,
+            status: req.body.status,
+            repository: req.body.repository
         }
 
         await Project.findOneAndUpdate({ name: req.body.name }, project, { runValidators: true, new: true });
