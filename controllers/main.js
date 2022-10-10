@@ -92,7 +92,7 @@ Surname: ${req.body.lastname}
 E-mail: ${req.body.email}
 ----
 ${req.body.message}`;
-    utils.sendMessageToAdminRoom(message);
+    await utils.sendMessageToAdminRoom(message);
     res.render(boilerplate, { page: "../success" });
 }
 
@@ -106,7 +106,7 @@ E-mail: ${req.body.email}
 ${req.body.projectName}
 
 ${req.body.projectDesc}`;
-    utils.sendMessageToAdminRoom(message);
+    await utils.sendMessageToAdminRoom(message);
     res.render(boilerplate, { page: "../success" });
 }
 

@@ -1,7 +1,6 @@
 const https = require("https");
 
-// TODO: Make this an async function.
-function sendMessageToAdminRoom(message) {
+async function sendMessageToAdminRoom(message) {
     const body = JSON.stringify({
         msgtype: "m.text",
         body: message
@@ -17,10 +16,30 @@ function sendMessageToAdminRoom(message) {
         }
     }
 
-    // TODO: Error handling.
-    const matrix_req = https.request(post_options);
-    matrix_req.write(body);
-    matrix_req.end();
+    return new Promise((resolve, reject) => {
+        const request = https.request(post_options, response => {
+            const response_data = [];
+
+            response.on('data', chunk => {
+                response_data.push(chunk);
+            });
+
+            if (response.statusCode === 200) {
+                response.on('end', () => resolve(JSON.parse(Buffer.concat(response_data).toString())));
+            } else {
+                response.on('end', () => {
+                    let error = new Error(`Matrix returned status code: ${response.statusCode}`);
+                    error.response = JSON.parse(Buffer.concat(response_data).toString());
+                    reject(error);
+                });
+            }
+        });
+
+        request.on('error', reject);
+
+        request.write(body);
+        request.end();
+    });
 }
 
 function validateString(text) {
