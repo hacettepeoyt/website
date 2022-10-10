@@ -168,7 +168,7 @@ const newProject = async (req, res) => {
 
 const deleteEvent = async (req, res) => {
     if (req.body.auth === process.env.AUTH_KEY) {
-        await Event.findOneAndDelete({ name: req.body.name });
+        await Event.findByIdAndDelete(req.body.id);
         res.sendStatus(200);
     } else {
         res.sendStatus(401);
@@ -177,7 +177,7 @@ const deleteEvent = async (req, res) => {
 
 const deleteCourse = async (req, res) => {
     if (req.body.auth === process.env.AUTH_KEY) {
-        await Course.findOneAndDelete({ name: req.body.name });
+        await Course.findByIdAndDelete(req.body.id);
         res.sendStatus(200);
     } else {
         res.sendStatus(401);
@@ -186,7 +186,7 @@ const deleteCourse = async (req, res) => {
 
 const deleteProject = async (req, res) => {
     if (req.body.auth === process.env.AUTH_KEY) {
-        await Project.findOneAndDelete({ name: req.body.name });
+        await Project.findByIdAndDelete(req.body.id);
         res.sendStatus(200);
     } else {
         res.sendStatus(401);
@@ -205,7 +205,7 @@ const updateEvent = async (req, res) => {
             duration: req.body.duration
         }
 
-        await Event.findOneAndUpdate({ name: req.body.name }, event, { runValidators: true, new: true });
+        await Event.findByIdAndUpdate(req.body.id, event, { runValidators: true, new: true });
         res.sendStatus(200);
     } else {
         res.sendStatus(401);
@@ -225,7 +225,7 @@ const updateCourse = async (req, res) => {
             duration: req.body.duration
         }
 
-        await Course.findOneAndUpdate({ name: req.body.name }, course, { runValidators: true, new: true });
+        await Course.findByIdAndUpdate(req.body.id, course, { runValidators: true, new: true });
         res.sendStatus(200);
     } else {
         res.sendStatus(401);
@@ -242,7 +242,7 @@ const updateProject = async (req, res) => {
             repository: req.body.repository
         }
 
-        await Project.findOneAndUpdate({ name: req.body.name }, project, { runValidators: true, new: true });
+        await Project.findByIdAndUpdate(req.body.id, project, { runValidators: true, new: true });
         res.sendStatus(200);
     } else {
         res.sendStatus(401);
