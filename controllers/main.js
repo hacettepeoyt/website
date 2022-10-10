@@ -39,7 +39,7 @@ const renderArgePage = async (req, res) => {
 }
 
 const renderWelcome = async (req, res) => {
-    res.render(boilerplate, { page: "../sections/welcome" })
+    res.render(boilerplate, { page: "../welcome" })
 }
 
 const renderEnrollForm = async (req, res) => {
@@ -52,10 +52,6 @@ const renderContactForm = async (req, res) => {
 
 const renderIdeaForm = async (req, res) => {
     res.render(boilerplate, { page: "../sections/forms/idea" });
-}
-
-const renderWIP = async (req, res) => {
-    res.render(boilerplate, { page: "../sections/wip" });
 }
 
 const enroll = async (req, res) => {
@@ -94,7 +90,7 @@ E-mail: ${req.body.email}
 ----
 ${req.body.message}`;
     utils.sendMessageToAdminRoom(message);
-    res.render(boilerplate, { page: "../sections/success" });
+    res.render(boilerplate, { page: "../success" });
 }
 
 const shareIdea = async (req, res) => {
@@ -108,7 +104,7 @@ ${req.body.projectName}
 
 ${req.body.projectDesc}`;
     utils.sendMessageToAdminRoom(message);
-    res.render(boilerplate, { page: "../sections/success" });
+    res.render(boilerplate, { page: "../success" });
 }
 
 const newEvent = async (req, res) => {
