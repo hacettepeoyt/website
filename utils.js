@@ -1,10 +1,9 @@
 const https = require("https");
 
 async function sendMessageToAdminRoom(message) {
-    // FIXME: Synapse does not accept non-ascii messages only sent from here for some reason.
     const body = JSON.stringify({
         msgtype: "m.text",
-        body: Buffer.from(message).toString('ascii')
+        body: message
     });
 
     var post_options = {
@@ -12,8 +11,7 @@ async function sendMessageToAdminRoom(message) {
         path: `/_matrix/client/r0/rooms/${process.env.MATRIX_ADMIN_ROOM}/send/m.room.message?access_token=${process.env.MATRIX_ACCESS_TOKEN}`,
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
-            'Content-Length': body.length
+            'Content-Type': 'application/json'
         }
     }
 
