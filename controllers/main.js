@@ -60,6 +60,12 @@ const renderWIP = async (req, res) => {
 
 const enroll = async (req, res) => {
     const oldMember = await Member.findOne({ studentID: req.body.studentID });
+    
+    for (key in req.body) {
+        if (!utils.validateString(req.body[key])) {
+            res.sendStatus(400);
+        }
+    }
 
     if (!oldMember) {
         const newMember = {

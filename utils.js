@@ -23,6 +23,14 @@ function sendMessageToAdminRoom(message) {
     matrix_req.end();
 }
 
+function validateString(text) {
+    if (text.length <= 64) {
+        return true;
+    }
+    return false;
+}
+
 module.exports = {
-    sendMessageToAdminRoom
+    sendMessageToAdminRoom,
+    validateString
 };
