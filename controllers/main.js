@@ -166,6 +166,20 @@ const newProject = async (req, res) => {
     }
 }
 
+const newFaq = async (req, res) => {
+    if (req.body.auth === process.env.AUTH_KEY) {
+        const faq = {
+            question: req.body.question,
+            answer: req.body.answer
+        }
+
+        await Faq.insertMany(faq);
+        res.sendStatus(200);
+    } else {
+        res.sendStatus(401);
+    }
+}
+
 const deleteEvent = async (req, res) => {
     if (req.body.auth === process.env.AUTH_KEY) {
         await Event.findByIdAndDelete(req.body.id);
@@ -187,6 +201,15 @@ const deleteCourse = async (req, res) => {
 const deleteProject = async (req, res) => {
     if (req.body.auth === process.env.AUTH_KEY) {
         await Project.findByIdAndDelete(req.body.id);
+        res.sendStatus(200);
+    } else {
+        res.sendStatus(401);
+    }
+}
+
+const deleteFaq = async (req, res) => {
+    if (req.body.auth === process.env.AUTH_KEY) {
+        await Faq.findByIdAndDelete(req.body.id);
         res.sendStatus(200);
     } else {
         res.sendStatus(401);
@@ -249,6 +272,20 @@ const updateProject = async (req, res) => {
     }
 }
 
+const updateFaq = async (req, res) => {
+    if (req.body.auth === process.env.AUTH_KEY) {
+        const faq = {
+            question: req.body.question,
+            answer: req.body.answer
+        }
+
+        await Faq.findByIdAndUpdate(req.body.id, faq, { runValidators: true, new: true });
+        res.sendStatus(200);
+    } else {
+        res.sendStatus(401);
+    }
+}
+
 const getMembers = async (req, res) => {
     if (req.body.auth === process.env.AUTH_KEY) {
         const members = await Member.find({});
@@ -258,6 +295,7 @@ const getMembers = async (req, res) => {
             csv += `${member.firstName},${member.lastName},${member.studentID},${member.degree},${member.email},${member.department},${member.mobileNumber},${member.groupChat}`;
             csv += "\r\n";
         }
+
         res.send(csv);
     } else {
         res.sendStatus(401);
@@ -282,11 +320,14 @@ module.exports = {
     newEvent,
     newCourse,
     newProject,
+    newFaq,
     deleteEvent,
     deleteCourse,
     deleteProject,
+    deleteFaq,
     updateEvent,
     updateCourse,
     updateProject,
+    updateFaq,
     getMembers
 }
