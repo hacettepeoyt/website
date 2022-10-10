@@ -55,12 +55,12 @@ const renderIdeaForm = async (req, res) => {
 }
 
 const renderWIP = async (req, res) => {
-    res.render(boilerplate, { page: "../sections/wip" })
+    res.render(boilerplate, { page: "../sections/wip" });
 }
 
 const enroll = async (req, res) => {
     const oldMember = await Member.findOne({ studentID: req.body.studentID });
-    
+
     for (key in req.body) {
         if (!utils.validateString(req.body[key])) {
             res.sendStatus(400);
@@ -94,6 +94,7 @@ E-mail: ${req.body.email}
 ----
 ${req.body.message}`;
     utils.sendMessageToAdminRoom(message);
+    res.render(boilerplate, { page: "../sections/success" });
 }
 
 const shareIdea = async (req, res) => {
@@ -107,6 +108,7 @@ ${req.body.projectName}
 
 ${req.body.projectDesc}`;
     utils.sendMessageToAdminRoom(message);
+    res.render(boilerplate, { page: "../sections/success" });
 }
 
 const newEvent = async (req, res) => {
