@@ -11,6 +11,7 @@ router.get('/welcome', controller.renderWelcome);
 router.get('/enroll', controller.renderEnrollForm);
 router.get('/contact', controller.renderContactForm);
 router.get('/idea', controller.renderIdeaForm);
+router.get('/members', controller.getMembers)
 
 router.post('/enroll', controller.enroll);
 router.post('/contact', controller.contact);
@@ -18,7 +19,6 @@ router.post('/idea', controller.shareIdea);
 router.post('/event', controller.newEvent);
 router.post('/course', controller.newCourse);
 router.post('/arge', controller.newProject);
-router.post('/members', controller.getMembers)
 
 router.delete('/event', controller.deleteEvent);
 router.delete('/course', controller.deleteCourse);
