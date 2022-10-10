@@ -1,9 +1,10 @@
 const https = require("https");
 
 async function sendMessageToAdminRoom(message) {
+    // FIXME: Synapse does not accept non-ascii messages only sent from here for some reason.
     const body = JSON.stringify({
         msgtype: "m.text",
-        body: message
+        body: Buffer.from(message).toString('ascii')
     });
 
     var post_options = {
