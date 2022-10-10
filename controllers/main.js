@@ -30,11 +30,14 @@ const renderFaqPage = async (req, res) => {
 const renderEventsPage = async (req, res) => {
     const events = await Event.find({});
     const courses = await Course.find({});
+    events.reverse();
+    courses.reverse();
     res.render(boilerplate, { page: "../sections/events", events, courses });
 }
 
 const renderArgePage = async (req, res) => {
     const projects = await Project.find({});
+    projects.reverse();
     res.render(boilerplate, { page: "../sections/arge", projects });
 }
 
