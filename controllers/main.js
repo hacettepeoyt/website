@@ -85,15 +85,21 @@ const enroll = async (req, res) => {
 }
 
 const contact = async (req, res) => {
-    const message = `Someone used the contact form:
+    const sum = parseInt(req.body.num1) + parseInt(req.body.num2);
+
+    if (parseInt(req.body.captcha) === sum) {
+        const message = `Someone used the contact form:
 ----
 Name: ${req.body.firstname}
 Surname: ${req.body.lastname}
 E-mail: ${req.body.email}
 ----
 ${req.body.message}`;
-    await utils.sendMessageToAdminRoom(message);
-    res.render(boilerplate, { page: "../success" });
+        await utils.sendMessageToAdminRoom(message);
+        res.render(boilerplate, { page: "../success" });
+    } else {
+        res.send("You are a robot!")
+    }
 }
 
 const shareIdea = async (req, res) => {
