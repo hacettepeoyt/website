@@ -52,8 +52,9 @@
                         <% num2 = Math.floor(Math.random() * 100); %> 
                         <input name="num1" type="number" id="num1" style="display: none;" value=<%= num1 %>>
                         <input name="num2" type="number" id="num2" style="display: none;" value=<%= num2 %>>
+
                         <span class="input-group-text" id="inputGroup-sizing-default"><%= `${num1} + ${num2}` %></span>
-                        <input name="captcha" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                        <input id="captcha" name="captcha" type="number" class="form-control" placeholder="Yandaki işlemin sonucunu giriniz">
                     </div>
 
                     <!-- Submit Button -->
