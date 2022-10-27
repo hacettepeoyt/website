@@ -66,22 +66,24 @@ const enroll = async (req, res) => {
         }
     }
 
-    if (!oldMember) {
-        const newMember = {
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            studentID: req.body.studentID,
-            degree: req.body.degree,
-            email: req.body.email,
-            department: req.body.department,
-            mobileNumber: req.body.mobileNumber,
-            groupChat: req.body.groupChat
-        }
-
-        await Member.insertMany(newMember);
+    const newMember = {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        studentID: req.body.studentID,
+        degree: req.body.degree,
+        email: req.body.email,
+        department: req.body.department,
+        mobileNumber: req.body.mobileNumber,
+        groupChat: req.body.groupChat
     }
 
-    res.redirect('/welcome');
+    if (!oldMember) {
+        await Member.insertMany(newMember);
+        res.redirect('/welcome');
+    } else {
+        await Member.findOneAndUpdate({ studentID: req.body.studentID }, newMember, { runValidators: true, new: true })
+        res.render(boilerplate, { page: "../success" });
+    }
 }
 
 const contact = async (req, res) => {
@@ -216,6 +218,15 @@ const deleteFaq = async (req, res) => {
     }
 }
 
+const deleteMember = async (req, res) => {
+    if (req.body.auth === process.env.AUTH_KEY) {
+        await Member.findOneAndDelete({ studentID: req.body.studentID });
+        res.sendStatus(200);
+    } else {
+        res.sendStatus(401);
+    }
+}
+
 const updateEvent = async (req, res) => {
     if (req.body.auth === process.env.AUTH_KEY) {
         const event = {
@@ -325,6 +336,7 @@ module.exports = {
     deleteCourse,
     deleteProject,
     deleteFaq,
+    deleteMember,
     updateEvent,
     updateCourse,
     updateProject,
