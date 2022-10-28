@@ -47,11 +47,15 @@
                     </div>
 
                     <!-- Captcha -->
-                    <div class="input-group mb-3 ms-5">
+                    <div class="input-group mb-3 col-lg-6">
                         <% num1 = Math.floor(Math.random() * 100); %>
                         <% num2 = Math.floor(Math.random() * 100); %> 
                         <input name="num1" type="number" id="num1" style="display: none;" value=<%= num1 %>>
                         <input name="num2" type="number" id="num2" style="display: none;" value=<%= num2 %>>
+
+                        <div class="input-group-prepend">
+                            <span class="me-3" style="display: block; width: 32px;"></span>
+                        </div>
 
                         <span class="input-group-text" id="inputGroup-sizing-default"><%= `${num1} + ${num2}` %></span>
                         <input id="captcha" name="captcha" type="number" class="form-control" placeholder="Yandaki işlemin sonucunu giriniz">
