@@ -41,6 +41,6 @@
 }
 
 
-.button-element-green:hover::before {
+.button-element-special:hover::before {
     opacity: 1;
 }
