@@ -7,24 +7,24 @@ const Event = content.Event;
 const Project = content.Project;
 const Course = content.Course;
 
-const boilerplate = "layouts/boilerplate";
-const errorPage = "../error";
+const boilerplate = 'layouts/boilerplate';
+const errorPage = '../error';
 
 
 // TODO: Reorganise the controller
 
 
 const renderHomePage = async (req, res) => {
-    res.redirect("/about");
+    res.redirect('/about');
 }
 
 const renderAboutPage = async (req, res) => {
-    res.render(boilerplate, { page: "../sections/about" });
+    res.render(boilerplate, { page: '../sections/about' });
 }
 
 const renderFaqPage = async (req, res) => {
     const faqs = await Faq.find({});
-    res.render(boilerplate, { page: "../sections/faq", faqs });
+    res.render(boilerplate, { page: '../sections/faq', faqs });
 }
 
 const renderEventsPage = async (req, res) => {
@@ -32,29 +32,29 @@ const renderEventsPage = async (req, res) => {
     const courses = await Course.find({});
     events.reverse();
     courses.reverse();
-    res.render(boilerplate, { page: "../sections/events", events, courses });
+    res.render(boilerplate, { page: '../sections/events', events, courses });
 }
 
 const renderArgePage = async (req, res) => {
     const projects = await Project.find({});
     projects.reverse();
-    res.render(boilerplate, { page: "../sections/arge", projects });
+    res.render(boilerplate, { page: '../sections/arge', projects });
 }
 
 const renderWelcome = async (req, res) => {
-    res.render(boilerplate, { page: "../welcome" })
+    res.render(boilerplate, { page: '../welcome' })
 }
 
 const renderEnrollForm = async (req, res) => {
-    res.render(boilerplate, { page: "../sections/forms/enroll" });
+    res.render(boilerplate, { page: '../sections/forms/enroll' });
 }
 
 const renderContactForm = async (req, res) => {
-    res.render(boilerplate, { page: "../sections/forms/contact" });
+    res.render(boilerplate, { page: '../sections/forms/contact' });
 }
 
 const renderIdeaForm = async (req, res) => {
-    res.render(boilerplate, { page: "../sections/forms/idea" });
+    res.render(boilerplate, { page: '../sections/forms/idea' });
 }
 
 const enroll = async (req, res) => {
@@ -82,7 +82,7 @@ const enroll = async (req, res) => {
         res.redirect('/welcome');
     } else {
         await Member.findOneAndUpdate({ studentID: req.body.studentID }, newMember, { runValidators: true, new: true })
-        res.render(boilerplate, { page: "../success" });
+        res.render(boilerplate, { page: '../success' });
     }
 }
 
@@ -98,9 +98,9 @@ E-mail: ${req.body.email}
 ----
 ${req.body.message}`;
         await utils.sendMessageToAdminRoom(message);
-        res.render(boilerplate, { page: "../success" });
+        res.render(boilerplate, { page: '../success' });
     } else {
-        res.send("You are a robot!")
+        res.send('You are a robot!')
     }
 }
 
@@ -115,7 +115,7 @@ ${req.body.projectName}
 
 ${req.body.projectDesc}`;
     await utils.sendMessageToAdminRoom(message);
-    res.render(boilerplate, { page: "../success" });
+    res.render(boilerplate, { page: '../success' });
 }
 
 const newEvent = async (req, res) => {
@@ -306,11 +306,11 @@ const updateFaq = async (req, res) => {
 const getMembers = async (req, res) => {
     if (req.body.auth === process.env.AUTH_KEY) {
         const members = await Member.find({});
-        let csv = "";
+        let csv = '';
 
         for (const member of members) {
             csv += `${member.firstName},${member.lastName},${member.studentID},${member.degree},${member.email},${member.department},${member.mobileNumber},${member.groupChat}`;
-            csv += "\r\n";
+            csv += '\r\n';
         }
 
         res.send(csv);

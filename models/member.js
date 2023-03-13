@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 
 const memberSchema = new mongoose.Schema({
@@ -19,7 +19,7 @@ const memberSchema = new mongoose.Schema({
 
     degree: {
         type: String,
-        enum: ["Hazırlık", "1. Sınıf", "2. Sınıf", "3. Sınıf", "4. Sınıf", "Yüksek Lisans", "Doktora", "Diğer"],
+        enum: ['Hazırlık', '1. Sınıf', '2. Sınıf', '3. Sınıf', '4. Sınıf', 'Yüksek Lisans', 'Doktora', 'Diğer'],
         required: true
     },
 
@@ -40,7 +40,7 @@ const memberSchema = new mongoose.Schema({
 
     groupChat: {
         type: String,
-        enum: ["Signal", "Telegram", "WhatsApp", "-"],
+        enum: ['Signal', 'Telegram', 'WhatsApp', '-'],
         required: true
     }
 })

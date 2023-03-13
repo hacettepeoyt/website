@@ -1,8 +1,8 @@
-const https = require("https");
+const https = require('https');
 
 async function sendMessageToAdminRoom(message) {
     const body = JSON.stringify({
-        msgtype: "m.text",
+        msgtype: 'm.text',
         body: message
     });
 
