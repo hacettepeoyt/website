@@ -1,0 +1,47 @@
+const express = require('express');
+const router = express.Router();
+const {authenticate} = require("../middleware");
+const Faq = require('../models/faq');
+
+const boilerplate = 'layouts/boilerplate';
+
+
+router.get('/', async (req, res) => {
+    const faqs = await Faq.find({});
+    return res.render(boilerplate, {page: '../sections/faq', faqs});
+});
+
+router.post('/', authenticate, async (req, res) => {
+    const faq = {
+        question: req.body.question,
+        answer: req.body.answer
+    };
+
+    await Faq.create(faq);
+    res.status(200).send();
+});
+
+router.patch('/:id', authenticate, async (req, res) => {
+    const updates = {
+        question: req.body.question,
+        answer: req.body.answer
+    }
+
+    const faq = await Faq.findByIdAndUpdate(req.params.id, updates, {runValidators: true, new: true});
+
+    if (!faq) {
+        return res.status(404).send();
+    }
+    return res.status(200).send();
+});
+
+router.delete('/:id', authenticate, async (req, res) => {
+    const faq = await Faq.findByIdAndDelete(req.params.id);
+
+    if (!faq) {
+        return res.status(404).send();
+    }
+    return res.status(200).send();
+});
+
+module.exports = router;

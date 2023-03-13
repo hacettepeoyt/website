@@ -6,14 +6,14 @@ async function sendMessageToAdminRoom(message) {
         body: message
     });
 
-    var post_options = {
+    const post_options = {
         host: 'matrix.org',
         path: `/_matrix/client/r0/rooms/${process.env.MATRIX_ADMIN_ROOM}/send/m.room.message?access_token=${process.env.MATRIX_ACCESS_TOKEN}`,
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         }
-    }
+    };
 
     return new Promise((resolve, reject) => {
         const request = https.request(post_options, response => {
@@ -42,13 +42,40 @@ async function sendMessageToAdminRoom(message) {
 }
 
 function validateString(text) {
-    if (text.length <= 64) {
-        return true;
-    }
-    return false;
+    return text.length <= 64;
+}
+
+function generateCsv(members) {
+    const rows = members.map((member) => {
+        return [
+            member.firstName,
+            member.lastName,
+            member.studentID,
+            member.degree,
+            member.email,
+            member.department,
+            member.mobileNumber,
+            member.groupChat,
+        ];
+    });
+
+    const header = [
+        'First Name',
+        'Last Name',
+        'Student ID',
+        'Degree',
+        'Email',
+        'Department',
+        'Mobile Number',
+        'Group Chat',
+    ];
+
+    const csvRows = [header, ...rows];
+    return csvRows.map((row) => row.join(',')).join('\n');
 }
 
 module.exports = {
     sendMessageToAdminRoom,
-    validateString
+    validateString,
+    generateCsv
 };

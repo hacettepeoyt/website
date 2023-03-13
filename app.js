@@ -1,28 +1,53 @@
 require('dotenv').config();
 const express = require('express');
-require('./express-async-errors');
-const connectToMongo = require('./database/connection');
-const mainRoute = require('./routes/main');
+const expressAsyncErrors = require('./express-async-errors');
+const mongoose = require('mongoose');
 const path = require('path');
+
+const mainRoute = require('./routes/main');
+const argeRoute = require('./routes/arge');
+const courseRoute = require('./routes/course');
+const eventRoute = require('./routes/event');
+const faqRoute = require('./routes/faq');
+const formRoute = require('./routes/form');
+const memberRoute = require('./routes/member');
+
+const DB_URL = process.env.DB_URL;
+const PORT = process.env.NODE_LOCAL_PORT;
+
 
 const app = express();
 
-const port = process.env.NODE_LOCAL_PORT;
-
-app.use(express.urlencoded({ extended: false }));
+// Middleware
+app.use(express.urlencoded({extended: false}));
 app.use(express.json());
-
 app.use('/public', express.static(path.join(__dirname, 'public')));
+
+// Routes
 app.use('/', mainRoute);
+app.use('/', formRoute);
+app.use('/arge', argeRoute);
+app.use('/courses', courseRoute);
+app.use('/events', eventRoute);
+app.use('/faq', faqRoute);
+app.use('/members', memberRoute);
+
+// View Engine
 app.set('view engine', 'ejs');
 
-app.listen(port, (err) => {
-  if (err) {
-    console.log(err)
-  } else {
-    console.log(`Server listening on ${port}`);
-    connectToMongo();
-  }
+mongoose.connect(DB_URL, {useNewUrlParser: true, useUnifiedTopology: true});
+const db = mongoose.connection;
+
+db.once('open', () => {
+    console.log(`Connected to database at ${DB_URL}`);
+});
+
+db.on('error', (error) => {
+    console.error(`Database connection error: ${error}`);
+});
+
+app.listen(PORT, () => {
+    console.log(`Server listening on ${PORT}`);
 });
 
 module.exports = app;
