@@ -1,11 +1,9 @@
 const mongoose = require('mongoose');
-const content = require('./models/content');
+const Course = require('./models/course');
+const Event = require('./models/event');
+const Faq = require('./models/faq');
 const Member = require('./models/member');
-
-const Faq = content.Faq;
-const Project = content.Project;
-const Event = content.Event;
-const Course = content.Course;
+const Project = require('./models/project');
 
 
 ////////// Seeds //////////
@@ -141,7 +139,7 @@ const seed = async () => {
         .catch((err) => {
             console.log('Error while connecting to database!', err);
         })
-        
+
     await Member.insertMany(seedMembers);
     await Faq.insertMany(seedFaqs);
     await Project.insertMany(seedProjects);

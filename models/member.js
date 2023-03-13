@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-
 const memberSchema = new mongoose.Schema({
     firstName: {
         type: String,
@@ -43,8 +42,6 @@ const memberSchema = new mongoose.Schema({
         enum: ['Signal', 'Telegram', 'WhatsApp', '-'],
         required: true
     }
-})
+});
 
-const Member = mongoose.model('Member', memberSchema);
-
-module.exports = Member;
+module.exports = mongoose.model('Member', memberSchema);

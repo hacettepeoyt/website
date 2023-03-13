@@ -1,14 +1,11 @@
-const content = require('../models/content');
+const Course = require('../models/course');
+const Event = require('../models/event');
+const Faq = require('../models/faq');
 const Member = require('../models/member');
+const Project = require('../models/project');
 const utils = require('../utils');
 
-const Faq = content.Faq;
-const Event = content.Event;
-const Project = content.Project;
-const Course = content.Course;
-
 const boilerplate = 'layouts/boilerplate';
-const errorPage = '../error';
 
 
 // TODO: Reorganise the controller
