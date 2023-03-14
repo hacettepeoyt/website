@@ -16,6 +16,10 @@ app.use("/public", express.static(path.join(__dirname, 'public')));
 app.use("/", mainRoute);
 app.set('view engine', 'ejs');
 
+app.all('*', (req, res) => {
+  app.get('*', controller.pageNotFound)
+})
+
 app.listen(port, (err) => {
   if (err) {
     console.log(err)

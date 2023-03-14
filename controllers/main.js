@@ -319,7 +319,9 @@ const getMembers = async (req, res) => {
     }
 }
 
-
+const pageNotFound = async (req, res) => {
+    res.render(boilerplate, { page: "../404" })
+}
 
 module.exports = {
     renderHomePage,
@@ -347,5 +349,6 @@ module.exports = {
     updateCourse,
     updateProject,
     updateFaq,
-    getMembers
+    getMembers,
+    pageNotFound
 }

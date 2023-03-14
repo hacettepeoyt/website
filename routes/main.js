@@ -11,7 +11,8 @@ router.get('/welcome', controller.renderWelcome);
 router.get('/enroll', controller.renderEnrollForm);
 router.get('/contact', controller.renderContactForm);
 router.get('/idea', controller.renderIdeaForm);
-router.get('/members', controller.getMembers)
+router.get('/members', controller.getMembers);
+router.get('*', controller.pageNotFound);
 
 router.post('/enroll', controller.enroll);
 router.post('/contact', controller.contact);
