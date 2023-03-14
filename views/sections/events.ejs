@@ -1,8 +1,10 @@
+<link href="/public/css/share-project-button-style.css" rel="stylesheet">
+
 <div class="row mx-auto">
     <div id="event-course-container" class="bg-white col-11 col-xl-10 container-fluid mx-auto">
         <div class="row row-cols-2">
             <div id="events-container" class="bg-white col px-1 px-sm-2 px-lg-4 mx-auto">
-                <div class="row mx-auto px-1 px-sm-1 py-2 my-4 rounded shadow events-color">
+                <div class="row mx-auto px-1 px-sm-1 py-2 my-4 rounded shadow events-color justify-content-evenly">
                     <div class="mt-2 text-center p-0">
                         <h2>Etkinliklerimiz</h2>
                     </div>
@@ -15,7 +17,9 @@
                                     <h4 class="mb-3">
                                         <%= event.name %>
                                     </h4>
-                                    <button class="btn events-color mt-auto border-0">Detaylar &gt;</button>
+                                    <button class="btn shadow border-1 button-element-event-special" onclick="location.href='/idea'">
+                                        <div class="d-flex align-items-center sliding-element-group-small justify-content-center align-items-center"><i class="bi bi-chevron-right sliding-element-small"></i><span class="ms-1 sliding-element-small"> Detaylar</span></div>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -70,7 +74,7 @@
                 </div>
             </div>
             <div id="courses-container" class="bg-white col px-1 px-sm-2 px-lg-4 mx-auto">
-                <div class="row mx-auto px-1 px-sm-1 py-2 my-4 rounded shadow courses-color">
+                <div class="row mx-auto px-1 px-sm-1 py-2 my-4 rounded shadow courses-color justify-content-evenly">
                     <div class="mt-2 text-center p-0">
                         <h2>Kurslarımız</h2>
                     </div>
@@ -83,7 +87,9 @@
                                     <h4 class="mb-3">
                                         <%= course.name %>
                                     </h4>
-                                    <button class="btn mt-auto courses-color border-0">Detaylar ></button>
+                                    <button class="btn shadow border-1 button-element-special" onclick="location.href='/idea'">
+                                        <div class="d-flex align-items-center sliding-element-group-small justify-content-center align-items-center"><i class="bi bi-chevron-right sliding-element-small"></i><span class="ms-1 sliding-element-small"> Detaylar</span></div>
+                                    </button>
                                 </div>
                             </div>
                         </div>
