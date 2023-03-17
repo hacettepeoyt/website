@@ -15,6 +15,8 @@ const memberRoute = require('./routes/member');
 const DB_URL = process.env.DB_URL;
 const PORT = process.env.NODE_LOCAL_PORT;
 
+const boilerplate = 'layouts/boilerplate';
+
 
 const app = express();
 
@@ -31,6 +33,14 @@ app.use('/courses', courseRoute);
 app.use('/events', eventRoute);
 app.use('/faq', faqRoute);
 app.use('/members', memberRoute);
+
+// In case the route is invalid
+app.use(function (req, res, next) {
+    if (!req.route) {
+        res.render(boilerplate, {page: '../404'})
+    }
+    next();
+});
 
 // View Engine
 app.set('view engine', 'ejs');
