@@ -1,21 +1,25 @@
+<link href="/public/css/share-project-button-style.css" rel="stylesheet">
+
 <div class="row mx-auto">
     <div id="event-course-container" class="bg-white col-11 col-xl-10 container-fluid mx-auto">
         <div class="row row-cols-2">
             <div id="events-container" class="bg-white col px-1 px-sm-2 px-lg-4 mx-auto">
-                <div class="row mx-auto px-1 px-sm-1 py-2 my-4 rounded shadow events-color">
+                <div class="row mx-auto px-1 px-sm-1 py-2 my-4 rounded shadow events-color justify-content-evenly">
                     <div class="mt-2 text-center p-0">
                         <h2>Etkinliklerimiz</h2>
                     </div>
                     <% for (const [index, event] of events.entries()) { %>
                         <div class="col-12 col-md-6 col-xl-4 my-1 my-sm-3 px-1 px-md-2">
-                            <div class="card rounded border-1 h-100 event-card-inner" data-bs-toggle="modal"
+                            <div class="card rounded border-1 h-100" data-bs-toggle="modal"
                             data-bs-target="#exampleEventModal<%=index%>">
                                 <div class="card-body d-flex flex-column p-3">
                                     <img src="<%= event.img %> >" alt="" class="img-fluid d-block mx-auto mb-3">
                                     <h4 class="mb-3">
                                         <%= event.name %>
                                     </h4>
-                                    <button class="btn events-color mt-auto border-0">Detaylar &gt;</button>
+                                    <button class="btn shadow border-1 button-element-event-special">
+                                        <div class="d-flex align-items-center sliding-element-group-small justify-content-center align-items-center"><i class="bi bi-chevron-right sliding-element-small"></i><span class="ms-1 sliding-element-small"> Detaylar</span></div>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -70,20 +74,22 @@
                 </div>
             </div>
             <div id="courses-container" class="bg-white col px-1 px-sm-2 px-lg-4 mx-auto">
-                <div class="row mx-auto px-1 px-sm-1 py-2 my-4 rounded shadow courses-color">
+                <div class="row mx-auto px-1 px-sm-1 py-2 my-4 rounded shadow courses-color justify-content-evenly">
                     <div class="mt-2 text-center p-0">
                         <h2>Kurslarımız</h2>
                     </div>
                     <% for (const [index, course] of courses.entries()) { %>
                         <div class="col-12 col-md-6 col-xl-4 my-1 my-sm-3 px-1 px-md-2">
-                            <div class="card rounded border-1 h-100 event-card-inner"data-bs-toggle="modal"
+                            <div class="card rounded border-1 h-100"data-bs-toggle="modal"
                             data-bs-target="#exampleCourseModal<%=index%>">
                                 <div class="card-body d-flex flex-column p-3">
                                     <img src="<%= course.img %> >" alt="" class="img-fluid d-block mx-auto mb-3">
                                     <h4 class="mb-3">
                                         <%= course.name %>
                                     </h4>
-                                    <button class="btn mt-auto courses-color border-0">Detaylar ></button>
+                                    <button class="btn shadow border-1 button-element-special">
+                                        <div class="d-flex align-items-center sliding-element-group-small justify-content-center align-items-center"><i class="bi bi-chevron-right sliding-element-small"></i><span class="ms-1 sliding-element-small"> Detaylar</span></div>
+                                    </button>
                                 </div>
                             </div>
                         </div>
