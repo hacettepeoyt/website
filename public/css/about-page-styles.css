@@ -1,0 +1,29 @@
+.social-link {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s;
+    font-size: 0.9rem;
+}
+
+.social-link i.bi-github {
+    color: #181717;
+}
+
+.social-link i.bi-instagram {
+    color: #e4405f;
+}
+
+.social-link i.bi-linkedin {
+    color:  #0e76a8;
+}
+
+.social-link:hover,
+.social-link:focus {
+    background: #ddd;
+    text-decoration: none;
+}
