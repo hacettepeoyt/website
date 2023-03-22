@@ -1,0 +1,94 @@
+.sliding-element{
+    transition: transform 1s ease;
+}
+.sliding-element:nth-child(2) {
+    transition-delay: 0.21s;
+}
+
+
+.sliding-element-group:hover .sliding-element:nth-child(1){
+    transform: translateX(12rem);
+}
+
+.sliding-element-group:hover .sliding-element:nth-child(2){
+    transform: translateX(-3rem);
+}
+
+.button-element-special {
+    position: relative;
+    background: #FF8D66FF;
+    background-image: linear-gradient(60deg,rgb(245, 98, 0)  0%, #e9a700 100%);
+    border-width: 0;
+    transition: background-image 1s linear;
+    z-index: 1;
+
+}
+
+.button-element-special::before {
+    border-radius:0.375rem;
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: #FF8D66FF;
+    background-image: linear-gradient(60deg,#e9a700  0%,rgb(245, 98, 0) 100%);
+    border-width: 0;
+    transition: opacity .5s linear;
+    opacity: 0;
+    z-index: -1;
+}
+
+.button-element-special:hover::before {
+    opacity: 1;
+}
+
+
+.button-element-event-special {
+    position: relative;
+    background: #36D1DC;
+    background-image: linear-gradient(60deg,#529ffe  0%, #41d6ff 100%);
+    border-width: 0;
+    transition: background-image .5s linear;
+    z-index: 1;
+}
+
+.button-element-event-special::before {
+    border-radius:0.375rem;
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: #36D1DC;
+    background-image: linear-gradient(60deg,#41d6ff  0%, #529ffe 100%);
+    border-width: 0;
+    transition: opacity .5s linear;
+    opacity: 0;
+    z-index: -1;
+}
+
+.button-element-event-special:hover::before {
+    opacity: 1;
+}
+
+.sliding-element-small{
+    transition: transform .5s ease;
+}
+.sliding-element-small:nth-child(2) {
+    transition-delay: 0.21s;
+}
+
+.sliding-element-group-small {
+    transform: translateX(-0.25rem)
+}
+
+.sliding-element-group-small:hover .sliding-element-small:nth-child(1){
+    transform: translateX(4.25rem);
+}
+
+.sliding-element-group-small:hover .sliding-element-small:nth-child(2){
+    transform: translateX(-1.25rem);
+}
