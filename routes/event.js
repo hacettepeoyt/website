@@ -3,6 +3,7 @@ const router = express.Router();
 const {authenticate} = require("../middleware");
 const Course = require("../models/course");
 const Event = require('../models/event');
+const {logger} = require("../utils");
 
 const boilerplate = 'layouts/boilerplate';
 
@@ -25,6 +26,7 @@ router.post('/', authenticate, async (req, res) => {
     };
 
     await Event.create(event);
+    logger(`Posted new event\n${JSON.stringify(event, null, 4)}`);
     return res.status(200).send();
 });
 
@@ -42,8 +44,11 @@ router.patch('/:id', authenticate, async (req, res) => {
     const event = await Event.findByIdAndUpdate(req.params.id, updates, {runValidators: true, new: true});
 
     if (!event) {
+        logger(`Event with ID ${req.params.id} not found`, 'ERROR');
         return res.status(404).send();
     }
+
+    logger(`Updated event with ID ${req.params.id}\n${JSON.stringify(updates, null, 4)}`);
     return res.status(200).send();
 });
 
@@ -51,8 +56,11 @@ router.delete('/:id', authenticate, async (req, res) => {
     const event = await Event.findByIdAndDelete(req.params.id);
 
     if (!event) {
+        logger(`Event with ID ${req.params.id} not found`, 'ERROR');
         return res.status(404).send();
     }
+
+    logger(`Deleted event with ID ${req.params.id}`);
     return res.status(200).send();
 });
 

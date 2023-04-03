@@ -1,5 +1,6 @@
 const https = require('https');
 
+
 async function sendMessageToAdminRoom(message) {
     const body = JSON.stringify({
         msgtype: 'm.text',
@@ -74,8 +75,14 @@ function generateCsv(members) {
     return csvRows.map((row) => row.join(',')).join('\n');
 }
 
+function logger(message, level = 'INFO') {
+    console.log(`[${new Date().toISOString()}] [${level.toUpperCase()}] ${message}`);
+}
+
+
 module.exports = {
     sendMessageToAdminRoom,
     validateString,
-    generateCsv
+    generateCsv,
+    logger
 };
