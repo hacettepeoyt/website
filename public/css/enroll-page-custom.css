@@ -1,0 +1,12 @@
+@media screen and (max-width: 481px) {
+    .responsive-reduced-width {
+        width: 90%;
+    }
+}
+
+@media screen and (min-width: 481px) {
+    .responsive-reduced-width {
+        width: 75%;
+    }
+}
+
