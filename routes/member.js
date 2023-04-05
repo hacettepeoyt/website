@@ -15,11 +15,11 @@ router.delete('/:studentID', authenticate, async (req, res) => {
     const member = await Member.findOneAndDelete({studentID: req.params.studentID});
 
     if (!member) {
-        log(`Member with ID not found ${req.params.studentID}`, 'ERROR');
+        log(`Member with studentID: "${req.params.studentID}" not found`, 'ERROR');
         return res.status(401).send();
     }
 
-    log(`Deleted member with ID ${req.params.studentID}`);
+    log(`Deleted member with studentID: "${req.params.studentID}"`);
     return res.status(200).send();
 });
 

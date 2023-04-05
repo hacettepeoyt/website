@@ -21,8 +21,8 @@ router.post('/', authenticate, async (req, res) => {
         duration: req.body.duration,
     };
 
-    await Course.create(course);
-    log(`Posted new course ${JSON.stringify(course, null, 4)}`);
+    const newCourse = await Course.create(course);
+    log(`Posted new course with ID: "${newCourse.id}"`);
     return res.status(200).send();
 });
 
@@ -41,11 +41,11 @@ router.patch('/:id', authenticate, async (req, res) => {
     const course = await Course.findByIdAndUpdate(req.params.id, updates, {runValidators: true, new: true});
 
     if (!course) {
-        log(`Course with ID ${req.params.id} not found`, 'ERROR');
+        log(`Course with ID: "${req.params.id}" not found`, 'ERROR');
         return res.status(404).send();
     }
 
-    log(`Updated course with ID ${req.params.id} ${JSON.stringify(updates, null, 4)}`);
+    log(`Updated course with ID: "${req.params.id}"`);
     return res.status(200).send();
 });
 
@@ -53,11 +53,11 @@ router.delete('/:id', authenticate, async (req, res) => {
     const course = await Course.findByIdAndDelete(req.params.id);
 
     if (!course) {
-        log(`Course with ID ${req.params.id} not found`, 'ERROR');
+        log(`Course with ID: "${req.params.id}" not found`, 'ERROR');
         return res.status(404).send();
     }
 
-    log(`Deleted course with ID ${req.params.id}`);
+    log(`Deleted course with ID: "${req.params.id}"`);
     return res.status(200).send();
 });
 

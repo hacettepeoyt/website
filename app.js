@@ -40,15 +40,15 @@ mongoose.connect(DB_URL, {useNewUrlParser: true, useUnifiedTopology: true});
 const db = mongoose.connection;
 
 db.once('open', () => {
-    log(`Connected to database at ${DB_URL}`);
+    log(`Connected to database at DB_URL: "${DB_URL}"`);
 });
 
 db.on('error', (error) => {
-    log(`Database connection error: ${error}`, 'ERROR');
+    log(`Database connection failed, error: "${error}"`, 'ERROR');
 });
 
 app.listen(PORT, () => {
-    log(`Server listening on ${PORT}`);
+    log(`Server is listening on PORT: "${PORT}"`);
 });
 
 module.exports = app;

@@ -21,8 +21,8 @@ router.post('/', authenticate, async (req, res) => {
         repository: req.body.repository
     };
 
-    await Project.create(project);
-    log(`Posted new project ${JSON.stringify(project, null, 4)}`);
+    const newProject = await Project.create(project);
+    log(`Posted new project with ID: "${newProject.id}"`);
     return res.status(200).send();
 });
 
@@ -38,11 +38,11 @@ router.patch('/:id', authenticate, async (req, res) => {
     const project = await Project.findByIdAndUpdate(req.params.id, updates, {new: true, runValidators: true});
 
     if (!project) {
-        log(`Project with ID ${req.params.id} not found`, 'ERROR');
+        log(`Project with ID: "${req.params.id}" not found`, 'ERROR');
         return res.status(404).send();
     }
 
-    log(`Updated project with ID ${req.params.id} ${JSON.stringify(updates, null, 4)}`);
+    log(`Updated project with ID: "${req.params.id}"`);
     return res.status(200).send();
 });
 
@@ -50,11 +50,11 @@ router.delete('/:id', authenticate, async (req, res) => {
     const project = await Project.findByIdAndDelete(req.params.id);
 
     if (!project) {
-        log(`Project with ID ${req.params.id} not found`, 'ERROR');
+        log(`Project with ID: "${req.params.id}" not found`, 'ERROR');
         return res.status(404).send();
     }
 
-    log(`Deleted project with ID ${req.params.id}`);
+    log(`Deleted project with ID: "${req.params.id}"`);
     return res.status(200).send();
 });
 

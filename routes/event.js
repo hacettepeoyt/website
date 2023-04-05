@@ -25,8 +25,8 @@ router.post('/', authenticate, async (req, res) => {
         duration: req.body.duration
     };
 
-    await Event.create(event);
-    log(`Posted new event ${JSON.stringify(event, null, 4)}`);
+    const newEvent = await Event.create(event);
+    log(`Posted new event with ID: "${newEvent.id}"`);
     return res.status(200).send();
 });
 
@@ -44,11 +44,11 @@ router.patch('/:id', authenticate, async (req, res) => {
     const event = await Event.findByIdAndUpdate(req.params.id, updates, {runValidators: true, new: true});
 
     if (!event) {
-        log(`Event with ID ${req.params.id} not found`, 'ERROR');
+        log(`Event with ID: "${req.params.id}" not found`, 'ERROR');
         return res.status(404).send();
     }
 
-    log(`Updated event with ID ${req.params.id} ${JSON.stringify(updates, null, 4)}`);
+    log(`Updated event with ID: "${req.params.id}"`);
     return res.status(200).send();
 });
 
@@ -56,11 +56,11 @@ router.delete('/:id', authenticate, async (req, res) => {
     const event = await Event.findByIdAndDelete(req.params.id);
 
     if (!event) {
-        log(`Event with ID ${req.params.id} not found`, 'ERROR');
+        log(`Event with ID: "${req.params.id}" not found`, 'ERROR');
         return res.status(404).send();
     }
 
-    log(`Deleted event with ID ${req.params.id}`);
+    log(`Deleted event with ID: "${req.params.id}"`);
     return res.status(200).send();
 });
 

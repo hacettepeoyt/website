@@ -18,8 +18,8 @@ router.post('/', authenticate, async (req, res) => {
         answer: req.body.answer
     };
 
-    await Faq.create(faq);
-    log(`Posted new QA ${JSON.stringify(faq, null, 4)}`);
+    const newFaq = await Faq.create(faq);
+    log(`Posted new QA with ID: "${newFaq.id}"`);
     res.status(200).send();
 });
 
@@ -32,11 +32,11 @@ router.patch('/:id', authenticate, async (req, res) => {
     const faq = await Faq.findByIdAndUpdate(req.params.id, updates, {runValidators: true, new: true});
 
     if (!faq) {
-        log(`QA with ID ${req.params.id} not found`, 'ERROR');
+        log(`QA with ID: "${req.params.id}" not found`, 'ERROR');
         return res.status(404).send();
     }
 
-    log(`Updated QA with ID ${req.params.id} ${JSON.stringify(updates, null, 4)}`);
+    log(`Updated QA with ID: "${req.params.id}"`);
     return res.status(200).send();
 });
 
@@ -44,11 +44,11 @@ router.delete('/:id', authenticate, async (req, res) => {
     const faq = await Faq.findByIdAndDelete(req.params.id);
 
     if (!faq) {
-        log(`QA with ID ${req.params.id} not found`, 'ERROR');
+        log(`QA with ID: "${req.params.id}" not found`, 'ERROR');
         return res.status(404).send();
     }
 
-    log(`Deleted QA with ID ${req.params.id}`);
+    log(`Deleted QA with ID: "${req.params.id}"`);
     return res.status(200).send();
 });
 
