@@ -1,26 +1,28 @@
+<link rel="stylesheet" href="/public/css/enroll-page-custom.css">
+
 <div class="container-sm align-items-center">
     <div class="py-2 mt-4 align-items-center">
-        <h1>Topluluğumuza Katılın</h1>
+        <h1 class="text-center">Topluluğumuza Katılın</h1>
         <!-- Registration Form -->
-        <div class="ml-5 pt-3 align-items-center form-container">
+        <div class="ml-5 pt-3 align-items-center form-container m-auto responsive-reduced-width">
             <form action="/enroll" method="POST">
-                <div class="">
+                <div class="d-flex row">
 
                     <!-- First Name -->
                     <div class="input-group col-lg-6 mb-4">
                         <div class="input-group-prepend">
                             <span class="px-1 border-md border-right-0 me-2">
-                                <img class="" src="/public/icon/profile.png">
+                                <i class="bi bi-person fs-2" style="color: #ff4100;"></i>
                             </span>
                         </div>
                         <input id="firstName" type="text" name="firstName" placeholder="İsim" class="form-control bg-white border-left-0 border-md" required>
                     </div>
 
                     <!-- Last Name -->
-                    <div class="input-group col-lg-6 mb-4">
+                    <div class="input-group col-lg-6 mb-4 fs-2">
                         <div class="input-group-prepend">
                             <span class="px-1 border-md border-right-0 me-2">
-                                <img class="" src="/public/icon/profile.png">
+                                <i class="bi bi-person" style="color: #ff4100;"></i>
                             </span>
                         </div>
                         <input id="lastName" type="text" name="lastName" placeholder="Soyisim" class="form-control bg-white border-left-0 border-md" required>
@@ -30,7 +32,7 @@
                     <div class="input-group col-lg-12 mb-4">
                         <div class="input-group-prepend">
                             <span class="px-1 border-md border-right-0 me-2">
-                                <img class="" src="/public/icon/mail.png">
+                                <i class="bi bi-envelope fs-2" style="color: #ff4100;"></i>
                             </span>
                         </div>
                         <input id="email" type="email" name="email" placeholder="Mail Adresi" class="form-control bg-white border-left-0 border-md" required>
@@ -40,7 +42,7 @@
                     <div class="input-group col-lg-12 mb-4">
                         <div class="input-group-prepend">
                             <span class="px-1 border-md border-right-0 me-2">
-                                <img class="" src="/public/icon/department.png">
+                                <i class="bi bi-building fs-2" style="color: #ff4100;"></i>
                             </span>
                         </div>
                         <input id="department" type="text" name="department" placeholder="Bölümünüz" class="form-control bg-white border-left-0 border-md" required>
@@ -50,7 +52,7 @@
                     <div class="input-group col-lg-12 mb-4">
                         <div class="input-group-prepend">
                             <span class="px-1 border-md border-right-0 me-2">
-                                <img class="" src="/public/icon/class.png">
+                                <i class="bi bi-list-ol fs-2" style="color: #ff4100;"></i>
                             </span>
                         </div>
                         <select class="form-control" id="class" name="degree" required>
@@ -71,7 +73,7 @@
                     <div class="input-group col-lg-6 mb-4">
                         <div class="input-group-prepend">
                             <span class="px-1 border-md border-right-0 me-2">
-                                <img class="" src="/public/icon/phone.png">
+                                <i class="bi bi-telephone fs-2" style="color: #ff4100;"></i>
                             </span>
                         </div>
                         <input id="phoneNumber" type="tel" name="mobileNumber" placeholder="Telefon Numarası" class="form-control bg-white border-md border-left-0" required>
@@ -81,7 +83,7 @@
                     <div class="input-group col-lg-12 mb-4">
                         <div class="input-group-prepend">
                             <span class="px-1 border-md border-right-0 me-2">
-                                <img class="" src="/public/icon/student-number.png">
+                                <i class="bi bi-123 fs-2" style="color: #ff4100;"></i>
                             </span>
                         </div>
                         <input id="studentNumber" type="tel" name="studentID" placeholder="Öğrenci Numarası" class="form-control bg-white border-left-0 border-md" required>
@@ -91,25 +93,16 @@
                     <div class="input-group col-lg-12 mb-4">
                         <div class="input-group-prepend">
                             <span class="px-1 border-md border-right-0 me-2">
-                                <img class="" src="/public/icon/social.png">
+                                <i class="bi bi-chat-left-text fs-2" style="color: #ff4100;"></i>
                             </span>
                         </div>
 
-                        <div class="form-check pe-3">
-                            <input class="form-check-input" type="radio" name="groupChat" id="signal-radio" value="Signal" required>
-                            <label class="form-check-label" for="signal-radio">Signal</label>
-                        </div>
-
-                        <div class="form-check pe-3">
-                            <input class="form-check-input" type="radio" name="groupChat" id="telegram-radio" value="Telegram">
-                            <label class="form-check-label" for="telegram-radio">Telegram</label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="groupChat" id="whatsapp-radio" value="WhatsApp">
-                            <label class="form-check-label" for="whatsapp-radio">WhatsApp</label>
-                        </div>
-
+                        <select class="form-control" id="class" name="groupChat" required>
+                            <option hidden value="">Size nereden ulaşalım? ↓</option>
+                            <option>Signal</option>
+                            <option>Telegram</option>
+                            <option>WhatsApp</option>
+                        </select>
                     </div>
 
                     <!-- Submit Button -->
