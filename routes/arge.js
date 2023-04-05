@@ -22,7 +22,7 @@ router.post('/', authenticate, async (req, res) => {
     };
 
     await Project.create(project);
-    log(`Posted new project\n${JSON.stringify(project, null, 4)}`);
+    log(`Posted new project ${JSON.stringify(project, null, 4)}`);
     return res.status(200).send();
 });
 
@@ -42,7 +42,7 @@ router.patch('/:id', authenticate, async (req, res) => {
         return res.status(404).send();
     }
 
-    log(`Updated project with ID ${req.params.id}\n${JSON.stringify(updates, null, 4)}`);
+    log(`Updated project with ID ${req.params.id} ${JSON.stringify(updates, null, 4)}`);
     return res.status(200).send();
 });
 

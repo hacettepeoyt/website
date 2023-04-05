@@ -19,7 +19,7 @@ router.post('/', authenticate, async (req, res) => {
     };
 
     await Faq.create(faq);
-    log(`Posted new QA\n${JSON.stringify(faq, null, 4)}`);
+    log(`Posted new QA ${JSON.stringify(faq, null, 4)}`);
     res.status(200).send();
 });
 
@@ -36,7 +36,7 @@ router.patch('/:id', authenticate, async (req, res) => {
         return res.status(404).send();
     }
 
-    log(`Updated QA with ID ${req.params.id}\n${JSON.stringify(updates, null, 4)}`);
+    log(`Updated QA with ID ${req.params.id} ${JSON.stringify(updates, null, 4)}`);
     return res.status(200).send();
 });
 

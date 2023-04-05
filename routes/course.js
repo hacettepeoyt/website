@@ -22,7 +22,7 @@ router.post('/', authenticate, async (req, res) => {
     };
 
     await Course.create(course);
-    log(`Posted new course\n${JSON.stringify(course, null, 4)}`);
+    log(`Posted new course ${JSON.stringify(course, null, 4)}`);
     return res.status(200).send();
 });
 
@@ -45,7 +45,7 @@ router.patch('/:id', authenticate, async (req, res) => {
         return res.status(404).send();
     }
 
-    log(`Updated course with ID ${req.params.id}\n${JSON.stringify(updates, null, 4)}`);
+    log(`Updated course with ID ${req.params.id} ${JSON.stringify(updates, null, 4)}`);
     return res.status(200).send();
 });
 

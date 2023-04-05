@@ -26,7 +26,7 @@ router.post('/', authenticate, async (req, res) => {
     };
 
     await Event.create(event);
-    log(`Posted new event\n${JSON.stringify(event, null, 4)}`);
+    log(`Posted new event ${JSON.stringify(event, null, 4)}`);
     return res.status(200).send();
 });
 
@@ -48,7 +48,7 @@ router.patch('/:id', authenticate, async (req, res) => {
         return res.status(404).send();
     }
 
-    log(`Updated event with ID ${req.params.id}\n${JSON.stringify(updates, null, 4)}`);
+    log(`Updated event with ID ${req.params.id} ${JSON.stringify(updates, null, 4)}`);
     return res.status(200).send();
 });
 
