@@ -75,7 +75,7 @@ function generateCsv(members) {
     return csvRows.map((row) => row.join(',')).join('\n');
 }
 
-function logger(message, level = 'INFO') {
+function log(message, level = 'INFO') {
     console.log(`[${new Date().toISOString()}] [${level.toUpperCase()}] ${message}`);
 }
 
@@ -84,5 +84,5 @@ module.exports = {
     sendMessageToAdminRoom,
     validateString,
     generateCsv,
-    logger
+    log
 };

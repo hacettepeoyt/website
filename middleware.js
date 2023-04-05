@@ -1,12 +1,12 @@
 const utils = require("./utils");
-const {logger} = require("./utils");
+const {log} = require("./utils");
 
 
 const authenticate = (req, res, next) => {
     if (req.body.auth === process.env.AUTH_KEY) {
         next();
     } else {
-        logger(`Client authentication failed with key ${req.body.auth}`);
+        log(`Client authentication failed with key ${req.body.auth}`);
         return res.status(401).send();
     }
 };
@@ -14,7 +14,7 @@ const authenticate = (req, res, next) => {
 const validateFields = (req, res, next) => {
     for (const key in req.body) {
         if (!utils.validateString(req.body[key])) {
-            logger(`Client string validation failed, length: ${req.body[key].length}`);
+            log(`Client string validation failed, length: ${req.body[key].length}`);
             return res.status(400).send();
         }
     }

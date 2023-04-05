@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const {validateFields} = require('../middleware');
+const {log} = require("../utils");
 const Member = require('../models/member');
 const utils = require('../utils');
-const {logger} = require("../utils");
 
 const boilerplate = 'layouts/boilerplate';
 
@@ -28,12 +28,12 @@ router.post('/enroll', validateFields, async (req, res) => {
 
     if (oldMember) {
         await Member.findOneAndUpdate({studentID: req.body.studentID}, newMember, {runValidators: true, new: true});
-        logger(`Updated member with ID ${req.body.studentID}\n${JSON.stringify(newMember, null, 4)}`);
+        log(`Updated member with ID ${req.body.studentID}\n${JSON.stringify(newMember, null, 4)}`);
         return res.render(boilerplate, {page: '../success'});
     }
 
     await Member.create(newMember);
-    logger(`Enrolled member with ID ${req.body.studentID}\n${JSON.stringify(newMember, null, 4)}`);
+    log(`Enrolled member with ID ${req.body.studentID}\n${JSON.stringify(newMember, null, 4)}`);
     return res.redirect('/welcome');
 });
 
@@ -46,7 +46,7 @@ router.post('/contact', async (req, res) => {
     const isHuman = parseInt(req.body.captcha) === sum;
 
     if (!isHuman) {
-        logger('Failed captcha');
+        log('Failed captcha');
         return res.status(403).send();
     }
 
@@ -59,7 +59,7 @@ E-mail: ${req.body.email}
 ${req.body.message}`;
 
     await utils.sendMessageToAdminRoom(message);
-    logger(`Sending contact message to Admin Room\n${message}`);
+    log(`Sending contact message to Admin Room\n${message}`);
     return res.render(boilerplate, {page: '../success'});
 });
 
@@ -79,7 +79,7 @@ ${req.body.projectName}
 ${req.body.projectDesc}`;
 
     await utils.sendMessageToAdminRoom(message);
-    logger(`Sending idea message to Admin Room\n${message}`);
+    log(`Sending idea message to Admin Room\n${message}`);
     res.render(boilerplate, {page: '../success'});
 });
 
