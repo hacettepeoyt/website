@@ -3,6 +3,7 @@ const express = require('express');
 const expressAsyncErrors = require('./express-async-errors');
 const mongoose = require('mongoose');
 const path = require('path');
+const {log} = require('./utils');
 
 const mainRoute = require('./routes/main');
 const argeRoute = require('./routes/arge');
@@ -39,15 +40,15 @@ mongoose.connect(DB_URL, {useNewUrlParser: true, useUnifiedTopology: true});
 const db = mongoose.connection;
 
 db.once('open', () => {
-    console.log(`Connected to database at ${DB_URL}`);
+    log(`Connected to database at DB_URL: "${DB_URL}"`);
 });
 
 db.on('error', (error) => {
-    console.error(`Database connection error: ${error}`);
+    log(`Database connection failed, error: "${error}"`, 'ERROR');
 });
 
 app.listen(PORT, () => {
-    console.log(`Server listening on ${PORT}`);
+    log(`Server is listening on PORT: "${PORT}"`);
 });
 
 module.exports = app;
