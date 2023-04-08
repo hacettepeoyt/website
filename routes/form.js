@@ -24,16 +24,30 @@ router.post('/enroll', validateFields, async (req, res) => {
         groupChat: req.body.groupChat,
     };
 
+    const message = `Someone used the enroll form:
+----
+Name: ${req.body.firstName}
+Surname: ${req.body.lastName}
+E-mail: ${req.body.email}
+----
+${req.body.tellus}`;
+
     const oldMember = await Member.findOne({studentID: req.body.studentID});
 
     if (oldMember) {
         await Member.findOneAndUpdate({studentID: req.body.studentID}, newMember, {runValidators: true, new: true});
         log(`Updated member with studentID: "${req.body.studentID}"`);
+        await utils.sendMessageToAdminRoom(message);
+        log(`Sending enroll message to Admin Room, message: "${message}"`);
         return res.render(boilerplate, {page: '../success'});
     }
 
     await Member.create(newMember);
     log(`Enrolled member with studentID: "${req.body.studentID}"`);
+
+    await utils.sendMessageToAdminRoom(message);
+    log(`Sending enroll message to Admin Room, message: "${message}"`);
+
     return res.redirect('/welcome');
 });
 
