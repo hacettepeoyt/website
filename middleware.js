@@ -13,6 +13,9 @@ const authenticate = (req, res, next) => {
 
 const validateFields = (req, res, next) => {
     for (const key in req.body) {
+        if (key === 'tellus') { // Skip validation for the "tellus" field
+            continue;
+        }
         if (!utils.validateString(req.body[key])) {
             log(`Client string validation failed, length: "${req.body[key].length}"`);
             return res.status(400).send();
