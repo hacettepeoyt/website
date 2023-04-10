@@ -1,0 +1,28 @@
+---
+name: CI
+on: [push, pull_request]
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-20.04
+    env:
+      NODE_LOCAL_PORT: 3000
+      DB_URL: mongodb://127.0.0.1:27017/oyt-website
+      AUTH_KEY: unrequitedloveandhewhosleepsbeneath
+    steps:
+    - name: checkout
+      uses: actions/checkout@v3
+    - name: install dependencies
+      run: |
+        curl -fsSL https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
+        echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
+        sudo apt update
+        sudo apt install -y nodejs npm mongodb-org
+        sudo systemctl start mongod
+        npm install
+    - name: test
+      run: |
+        nohup node app.js &
+        sleep 5
+        test/functional/run_all_tests.sh
+        pkill node
