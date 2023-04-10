@@ -11,6 +11,7 @@ const eventRoute = require('./routes/event');
 const faqRoute = require('./routes/faq');
 const formRoute = require('./routes/form');
 const memberRoute = require('./routes/member');
+const { pageNotFound } = require('./middleware');
 
 const DB_URL = process.env.DB_URL;
 const PORT = process.env.NODE_LOCAL_PORT;
@@ -31,6 +32,9 @@ app.use('/courses', courseRoute);
 app.use('/events', eventRoute);
 app.use('/faq', faqRoute);
 app.use('/members', memberRoute);
+
+// Error Middleware
+app.use('*', pageNotFound);
 
 // View Engine
 app.set('view engine', 'ejs');
