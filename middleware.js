@@ -1,6 +1,8 @@
 const utils = require("./utils");
 const {log} = require("./utils");
 
+const boilerplate = 'layouts/boilerplate';
+
 
 const authenticate = (req, res, next) => {
     if (req.body.auth === process.env.AUTH_KEY) {
@@ -24,7 +26,25 @@ const validateFields = (req, res, next) => {
     next();
 };
 
+const pageNotFound = (req, res, next) => {
+    const error = {
+        status: 404,
+        title: 'Page Not Found',
+        message: 'We think you misspelled an url.'
+    }
+
+    res.status(404);
+
+    // Render error pages by looking at error status code
+    if (error.status === 404) {
+        res.render(boilerplate, {page: '../error', error: error});
+    } else {
+        next();
+    }
+};
+
 module.exports = {
     authenticate,
-    validateFields
+    validateFields,
+    pageNotFound
 };

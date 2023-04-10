@@ -1,11 +1,7 @@
-<!-- Draft -->
-
-<div class="row">
-    <div class="col-6 offset-3">
-        <div class="alert alert-danger" role="alert">
-            <h2 class="alert-heading">
-                Something went wrong :(
-            </h2>
-        </div>
+<div class="d-flex justify-content-center align-items-center text-center" style="height:45rem">
+    <div class="d-block">
+        <div class="" style="font-size: 14rem"><%= error.status %></div>
+        <div class="text-secondary display-5" style="transform: translateY(-3rem);"><%= error.title %></div>
+        <div class="display-3"><%= error.message %></div>
     </div>
 </div>
