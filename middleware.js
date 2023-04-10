@@ -1,5 +1,4 @@
-const utils = require("./utils");
-const {log} = require("./utils");
+const {validateString, log} = require('./utils');
 
 const boilerplate = 'layouts/boilerplate';
 
@@ -9,7 +8,7 @@ const authenticate = (req, res, next) => {
         next();
     } else {
         log(`Client authentication failed with key: "${req.body.auth}"`);
-        return res.status(401).send();
+        return next({status: 401});
     }
 };
 
@@ -18,33 +17,55 @@ const validateFields = (req, res, next) => {
         if (key === 'tellus') { // Skip validation for the "tellus" field
             continue;
         }
-        if (!utils.validateString(req.body[key])) {
+        if (!validateString(req.body[key])) {
             log(`Client string validation failed, length: "${req.body[key].length}"`);
-            return res.status(400).send();
+            return next({status: 400, message: `${key} uzunluğu 64'ten büyük olamaz!`});
         }
     }
     next();
 };
 
-const pageNotFound = (req, res, next) => {
-    const error = {
-        status: 404,
-        title: 'Page Not Found',
-        message: 'We think you misspelled an url.'
-    }
+const handleErrorResponse = (err, req, res, next) => {
+    log(JSON.stringify(err), 'ERROR');
+    let error;
 
-    res.status(404);
-
-    // Render error pages by looking at error status code
-    if (error.status === 404) {
-        res.render(boilerplate, {page: '../error', error: error});
+    if (err.status === 400) {
+        error = {
+            status: err.status,
+            title: err.title ? err.title : 'Bad Request',
+            message: err.message ? err.message : 'Yok öyle bir istek =)'
+        };
+    } else if (err.status === 401) {
+        error = {
+            status: err.status,
+            title: err.title ? err.title : 'Yetkisiz Kullanıcı',
+            message: err.message ? err.message : 'Bu işlem için yetkili olman gerekiyor!'
+        };
+    } else if (err.status === 404) {
+        error = {
+            status: err.status,
+            title: err.title ? err.title : 'İstediğin Şeyi Bulamadık!',
+            message: err.message ? err.message : 'Çünkü öyle bir şey yok ;)'
+        };
+    } else if (err.status === 418) {
+        error = {
+            status: err.status,
+            title: err.title ? err.title : 'Ben Bir Çaydanlığım',
+            message: err.message ? err.message : 'Sana çay yok!'
+        };
     } else {
-        next();
+        error = {
+            status: 500,
+            title: err.title ? err.title : 'Bizim Tarafımızda Bir Hata Oluştu',
+            message: err.message ? err.message : 'Bize ulaşırsan sorunu daha hızlı çözebiliriz!'
+        };
     }
-};
+
+    return res.render(boilerplate, {page: '../error', error});
+}
 
 module.exports = {
     authenticate,
     validateFields,
-    pageNotFound
+    handleErrorResponse
 };

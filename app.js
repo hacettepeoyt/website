@@ -12,7 +12,7 @@ const eventRoute = require('./routes/event');
 const faqRoute = require('./routes/faq');
 const formRoute = require('./routes/form');
 const memberRoute = require('./routes/member');
-const {pageNotFound} = require('./middleware');
+const {handleErrorResponse} = require('./middleware');
 
 const DB_URL = process.env.DB_URL;
 const PORT = process.env.NODE_LOCAL_PORT;
@@ -34,8 +34,21 @@ app.use('/events', eventRoute);
 app.use('/faq', faqRoute);
 app.use('/members', memberRoute);
 
-// Error Middleware
-app.use('*', pageNotFound);
+// In case there isn't any route
+app.use(function (req, res, next) {
+    if (!req.route) {
+        const error = {
+            status: 404,
+            title: 'Sayfa Bulunamadı',
+            message: 'Sanırsam yolunu şaşırdın!'
+        };
+        return next(error);
+    }
+    next();
+});
+
+// Error handler middleware
+app.use(handleErrorResponse);
 
 // View Engine
 app.set('view engine', 'ejs');
