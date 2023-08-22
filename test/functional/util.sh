@@ -48,3 +48,45 @@ check_output_fail() {
   fi 
 }
 
+check_mongo_output() {
+  COLLECTION="$1"
+  OUTPUT="$2"
+
+  printf "Checking collection $COLLECTION for output '$OUTPUT'... "
+  MONGO_RESPONSE=$(query_on_mongo $COLLECTION $OUTPUT)
+
+  if echo "$MONGO_RESPONSE" | grep "$OUTPUT" > /dev/null; then
+    echo -e "\033[32mpass\033[0m"
+  else
+    echo -e "\033[31mfail\033[0m"
+    false
+  fi
+}
+
+check_mongo_output_fail() {
+  COLLECTION="$1"
+  OUTPUT="$2"
+
+  printf "Checking collection $COLLECTION for output without '$OUTPUT'... "
+  MONGO_RESPONSE=$(query_on_mongo $COLLECTION $OUTPUT)
+
+  if ! echo "$MONGO_RESPONSE" | grep "$OUTPUT" > /dev/null; then
+    echo -e "\033[32mpass\033[0m"
+  else
+    echo -e "\033[31mfail\033[0m"
+    false
+  fi
+}
+
+get_object_id() {
+  COLLECTION="$1"
+  OBJECT_NAME="$2"
+  MONGO_RESPONSE=$(query_on_mongo $COLLECTION $OBJECT_NAME)
+  echo "$MONGO_RESPONSE" | grep -o 'ObjectId(".*")' | awk -F'"' '{print $2}'
+}
+
+query_on_mongo() {
+  COLLECTION="$1"
+  NAME="$2"
+  echo $(mongo --eval "db.${COLLECTION}.find({'name':\"${NAME}\"});" oyt-website)
+}
