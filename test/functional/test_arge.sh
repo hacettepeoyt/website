@@ -13,4 +13,4 @@ OBJECT_ID=$(get_object_id "projects" "AOE2")
 
 check "arge/$OBJECT_ID" DELETE -H "Content-Type: application/json" --data "{\"auth\": \"$AUTH_KEY\"}"
 
-check_mongo_output_fail "projects" "AOE2" -H "Content-Type: application/json" --data "{\"auth\": \"$AUTH_KEY\"}"
+check_mongo_output_fail "projects" "AOE2"

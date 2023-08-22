@@ -13,4 +13,4 @@ OBJECT_ID=$(get_object_id "courses" "VVindovvs12-101")
 
 check "courses/$OBJECT_ID" DELETE -H "Content-Type: application/json" --data "{\"auth\": \"$AUTH_KEY\"}"
 
-check_mongo_output_fail "courses" "VVindovvs12-101" -H "Content-Type: application/json" --data "{\"auth\": \"$AUTH_KEY\"}"
+check_mongo_output_fail "courses" "VVindovvs12-101"

@@ -13,4 +13,4 @@ OBJECT_ID=$(get_object_id "events" "OYG")
 
 check "events/$OBJECT_ID" DELETE -H "Content-Type: application/json" --data "{\"auth\": \"$AUTH_KEY\"}"
 
-check_mongo_output_fail "events" "OYG" -H "Content-Type: application/json" --data "{\"auth\": \"$AUTH_KEY\"}"
+check_mongo_output_fail "events" "OYG"
