@@ -79,10 +79,37 @@ function log(message, level = 'INFO') {
     console.log(`[${new Date().toISOString()}] [${level.toUpperCase()}] ${message}`);
 }
 
+function makeTitleCase(str) {
+    let words = str.split(/\s+/);
+    let res = '';
+
+    for (let i = 0; i < words.length; i++) {
+        let word = words[i];
+        res += word.charAt(0).toUpperCase() + word.slice(1).toLowerCase() + ' ';
+    }
+
+    return res.trimEnd();
+}
+
+
+function standardizePhoneNumber(initialNumber) {
+    if (!initialNumber)
+        return initialNumber
+    if (initialNumber.charAt(0) === '+')
+        return initialNumber;
+    if (initialNumber.substring(0, 2) === '90')
+        return '+' + initialNumber;
+    if (initialNumber.charAt(0) === '0')
+        return '+9' + initialNumber;
+
+    return '+90' + initialNumber;
+}
 
 module.exports = {
     sendMessageToAdminRoom,
     validateString,
     generateCsv,
-    log
+    log,
+    makeTitleCase,
+    standardizePhoneNumber
 };

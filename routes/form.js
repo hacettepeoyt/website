@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const {validateFields} = require('../middleware');
-const {log} = require("../utils");
+const {log, standardizePhoneNumber} = require("../utils");
 const Member = require('../models/member');
 const utils = require('../utils');
 
@@ -14,13 +14,13 @@ router.get('/enroll', async (req, res) => {
 
 router.post('/enroll', validateFields, async (req, res) => {
     const newMember = {
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        studentID: req.body.studentID,
+        firstName: utils.makeTitleCase(req.body.firstName.trim()),
+        lastName: utils.makeTitleCase(req.body.lastName.trim()),
+        studentID: utils.makeTitleCase(req.body.studentID.trim()),
         degree: req.body.degree,
-        email: req.body.email,
-        department: req.body.department,
-        mobileNumber: req.body.mobileNumber,
+        email: req.body.email.trim(),
+        department: utils.makeTitleCase(req.body.department.trim()),
+        mobileNumber: standardizePhoneNumber(req.body.mobileNumber.trim()),
         groupChat: req.body.groupChat,
     };
 
