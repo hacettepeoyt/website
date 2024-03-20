@@ -1,5 +1,8 @@
 # Hacettepe Özgür Yazılım Topluluğu Websitesi
 
+This project has been archived, and there won't be further development in the future, unless Node.js decides not to be *crappy*.
+You can see our new website, written in Django, from [here](https://github.com/hacettepeoyt/oyt-website)
+
 ## Build
 0. Install [Node.js](https://nodejs.org/en/) and make sure [Node Package Manager (npm)](https://www.npmjs.com/) is also installed into your machine.
 1. Install dependencies with `npm install`. If you are in production, use `npm install --production`.
